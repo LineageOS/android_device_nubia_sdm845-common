@@ -1,4 +1,5 @@
 allow init socket_device:sock_file { unlink setattr create };
+allow init block_device:lnk_file { read setattr };;
 
 dontaudit init { bt_firmware_file firmware_file }:filesystem getattr;
 
