@@ -223,3 +223,9 @@ on post-fs-data
     # hall_device
     chown system system /sys/class/hall_device/hall_device/enable
     chmod 0666 /sys/class/hall_device/hall_device/enable
+
+# QCOM ADSP FastRPC
+service adsprpcd /system/vendor/bin/adsprpcd
+   class main
+   user media
+   group media
