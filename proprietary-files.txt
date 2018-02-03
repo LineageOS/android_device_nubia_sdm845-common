@@ -477,32 +477,6 @@ vendor/lib64/libspcom.so|e38e18cebf7092593ea74d680ae7203cb3c4e811
 vendor/lib/libperipheral_client.so|7886baa3fb0f5d1bd7971d806a34118eae37af03
 vendor/lib/libspcom.so|4aa4d6147e960e7f00aa7880e37d63bd57bbd7b4
 
-# Perf - from Z01R WW_user_100.10.107.123_20210131
-vendor/bin/hw/vendor.qti.hardware.perf@2.0-service|0cf92a4aafe704e5336c057b09765f9c2cb07f58
-vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc|cc8658db5e19f8e5e575fb986e7d38147e675f8d
-vendor/etc/perf/commonresourceconfigs.xml|1f8b94ca8dcdc0afd66d9e9b0fcef15fdb67f5d0
-vendor/etc/perf/perf-profile0.conf|02204355bf29ceb0460cd53e6716552bb9d9b05f
-vendor/etc/perf/perf-profile1.conf|4056b772f2790ffd2f466275be8f03e4a796b55c
-vendor/etc/perf/perf-profile2.conf|66ac3877bf0030b72c99107f665bb392538d0237
-vendor/etc/perf/perf-profile3.conf|91fc5322ecee2985f128049b0d44e2bee0b3be78
-vendor/etc/perf/perf-profile4.conf|8cb4e9a968ae7e8918be60f10ea55da89b640d99
-vendor/etc/perf/perf-profile5.conf|e2352fb4d9a1ea711b476df58c762f74c959e2c1
-vendor/etc/perf/perf-profile6.conf|910a193b8425bbe0080f746d6788e66986b2e762
-vendor/etc/perf/perfboostsconfig.xml|b4eddae08e415ca75dea3d8ff465f9d8e65efda4
-vendor/etc/perf/perfconfigstore.xml|c58788a418ff5ef7dac0799c7d31f8fe4fe32024
-vendor/etc/perf/targetconfig.xml|5c81c22e06c6a0fc77e4f39efb4f7034f7bf5a3f
-vendor/etc/perf/targetresourceconfigs.xml|ab576578f1bcb02115b8a30d4a109d660d2e6fb6
-vendor/lib64/libperfconfig.so|f4e99ae3b36eb04575a8c07068deec78dc4207df
-vendor/lib64/libperfgluelayer.so|15d08be130c6f06be6dde38cecfc5e98843f7666
-vendor/lib64/libqti-perfd-client.so|a02ad16eb631a7a4f81bf42140d309373dd54904
-vendor/lib64/libqti-perfd.so|5ff35c24cc10b47d3e055ca8177fe6b434d0b8a6
-vendor/lib64/libqti-util.so|05009227dd46dea3a6220a3a670de3c1d42d0690
-vendor/lib/libperfconfig.so|c1d35966a793bff58e7d338c837bead90e057e01
-vendor/lib/libperfgluelayer.so|f850a2c60e7b3bd79e0b5183cea682fcc62a1d28
-vendor/lib/libqti-perfd-client.so|678467644c31e36ff0f7e54963a511c1a6feb0a4
-vendor/lib/libqti-perfd.so|5720c909f2fb323410e81ca0b78d6d9be87e8e4e
-vendor/lib/libqti-util.so|29e70dd3e1119885bb302ee340270613f4cd58bc
-
 # Power-off alarm - from Z01R WW_user_100.10.107.123_20210131
 -product/app/PowerOffAlarm/PowerOffAlarm.apk|58ea56eb5d5913a634283c891647ba1849662f9d
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|55da4c1ff12b377c25480a146d63893c6ba6c436
