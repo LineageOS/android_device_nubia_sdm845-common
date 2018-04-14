@@ -38,7 +38,7 @@
 #include <fcntl.h>
 #include <dlfcn.h>
 #include <stdlib.h>
-
+#include <unistd.h>
 #include <log/log.h>
 
 #include "power-helper.h"
@@ -79,6 +79,42 @@ struct stats_section system_sections[] = {
     { SYSTEM_STATES, "RPM Mode:aosd", system_stats_labels, ARRAY_SIZE(system_stats_labels) },
     { SYSTEM_STATES, "RPM Mode:cxsd", system_stats_labels, ARRAY_SIZE(system_stats_labels) },
 };
+
+static int sysfs_write(char *path, char *s)
+{
+    char buf[80];
+    int len;
+    int ret = 0;
+    int fd = open(path, O_WRONLY);
+
+    if (fd < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error opening %s: %s\n", path, buf);
+        return -1 ;
+    }
+
+    len = write(fd, s, strlen(s));
+    if (len < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error writing to %s: %s\n", path, buf);
+
+        ret = -1;
+    }
+
+    close(fd);
+
+    return ret;
+}
+
+void set_feature(feature_t feature, int state) {
+    switch (feature) {
+        case POWER_FEATURE_DOUBLE_TAP_TO_WAKE:
+            sysfs_write(TAP_TO_WAKE_NODE, state ? "1" : "0");
+            break;
+        default:
+            break;
+    }
+}
 
 static int parse_stats(const char **stat_labels, size_t num_stats,
         uint64_t *list, FILE *fp) {
