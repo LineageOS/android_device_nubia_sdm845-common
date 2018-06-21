@@ -28,7 +28,7 @@
  */
 
 #define LOG_NIDEBUG 0
-#define LOG_TAG "android.hardware.power@1.2-service.nubia_sdm845-libperfmgr"
+#define LOG_TAG "android.hardware.power@1.3-service.nubia_sdm845-libperfmgr"
 
 #include <errno.h>
 #include <inttypes.h>
