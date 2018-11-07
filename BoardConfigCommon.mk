@@ -72,13 +72,6 @@ QCOM_BT_USE_BTNV := true
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
 
-# Dex
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT ?= true
-  endif
-endif
-
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
