@@ -101,6 +101,9 @@ ro.bluetooth.wipower=false
 vendor.bluetooth.soc=cherokee
 vendor.qcom.bluetooth.soc=cherokee
 
+# Charger
+ro.charger.enable_suspend=true
+
 # Display post-processing
 ro.vendor.display.cabl=2
 
