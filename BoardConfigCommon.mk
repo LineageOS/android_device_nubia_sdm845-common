@@ -6,6 +6,8 @@
 
 BOARD_VENDOR := nubia
 
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
+
 COMMON_PATH := device/nubia/sdm845-common
 
 BUILD_BROKEN_DUP_RULES := true
