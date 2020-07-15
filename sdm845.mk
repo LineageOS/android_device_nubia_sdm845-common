@@ -267,7 +267,9 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.4 \
     android.hardware.radio.config@1.2 \
     libjson \
-    librmnetctl
+    libprotobuf-cpp-full \
+    librmnetctl \
+    libxml2
 
 # RCS
 PRODUCT_PACKAGES += \
