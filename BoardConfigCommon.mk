@@ -106,6 +106,9 @@ DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 # LMKD
 TARGET_LMKD_STATS_LOG := true
 
+# Media
+TARGET_USES_MEDIA_EXTENSIONS := true
+
 # Network Routing
 TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
