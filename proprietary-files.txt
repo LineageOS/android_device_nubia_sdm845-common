@@ -105,19 +105,21 @@ vendor/lib/libhdr_tm.so|eab66540cffc6b81449cfe620e715de7318e17a3
 
 # Display (SDM) - from Z01R WW_user_100.10.107.123_20210131
 vendor/lib64/libqseed3.so|e465ec47468012202edab549619ae3b33f29dfa4
-vendor/lib64/libsdedrm.so|8f24fa0b0549837d8d3bcf2c36a0d0f5127dc32c
 vendor/lib64/libsdm-color.so|7f46bd9fc0177212036cd6ca6400f1dc8dff5d52
 vendor/lib64/libsdm-diag.so|9dcada14f81cc46eb11f2f222591237194d9a6b7
 vendor/lib64/libsdm-disp-vndapis.so|ced43c72112f9b3c8066785ebe771839e7c6a20f
 vendor/lib64/libsdmextension.so|f1a0628a8819cc5558089c213cf56306dcb2494b
 vendor/lib64/libtinyxml2_1.so|d87dfed7c044e24c90fe4ae9fcd9b3812f432ff4
 vendor/lib/libqseed3.so|2aec751ff023c1c3a0150dc0ae952ca79d8689e1
-vendor/lib/libsdedrm.so|18113911b2cdf7a5b10e5a2c82a9f350c8c33506
 vendor/lib/libsdm-color.so|9bd0551211b2be2cdb1df0c8bf23e126933aa2c8
 vendor/lib/libsdm-diag.so|eac1b321d43c1b3c569cef589bf2cc38b51ff6b4
 vendor/lib/libsdm-disp-vndapis.so|33511878184e3786f99e81eca10ef89732c055a1
 vendor/lib/libsdmextension.so|2594a0dbd7d7f82e1c2ae2bd3083116f7854cb2a
 vendor/lib/libtinyxml2_1.so|c79f7ef09a7fc93152fdf5252199891fc31f346c
+
+# Display (SDM) - from beryllium - V11.0.9.0.QDGMIXM
+vendor/lib64/libsdedrm.so|d64e13cb1b7e5d27fe5ab9f68c8c05ca390e352b
+vendor/lib/libsdedrm.so|a35a2d0a7a4ea4edf808ebd2525920bdd5ada995
 
 # Display postprocessing - from Z01R WW_user_100.10.107.123_20210131
 vendor/bin/hw/vendor.display.color@1.0-service|ae804149eab8e9933ef04c5bad07abd99af60379
