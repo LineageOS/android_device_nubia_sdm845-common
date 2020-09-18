@@ -830,7 +830,7 @@ vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so|14a82d8be3afd48e470d8f5ac4
 vendor/lib64/vendor.qti.hardware.soter@1.0.so|d51585cec19572794efd0e7d58866d0478421ae6
 
 # Time services - from Z01R WW_user_100.10.107.123_20210131
--vendor/app/TimeService/TimeService.apk;:timeservice_app_cert|4a37afd1395758d946580af184a738e3c657b1e2
+-vendor/app/TimeService/TimeService.apk|4a37afd1395758d946580af184a738e3c657b1e2
 vendor/bin/time_daemon|6d023d0dd1f363d3d6f6f754094883c4e838a5d9
 vendor/etc/init/init.time_daemon.rc|b253ca2a498757e14e1d7a051bf504ae09218f51
 vendor/lib64/libtime_genoff.so|d989a9953b44a4682fbcb8a01cdc1e69bdbb97f5
