@@ -114,11 +114,7 @@ vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service|b4c32b50ece7
 vendor/etc/configstore/vpp.configstore.xml|d5095f33c326017a21fff186d19a2ce146b85d94
 vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc|4ede0250585a44b01d351bbc301d7a13cc3d783d
 vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so|5963b15b359e687eff7b212703f2995fa0a573a6
-vendor/lib64/vendor.qti.hardware.capabilityconfigstore@1.0.so|ddad4c92ab8980eeb56844e40bbfd66a0a44dbca
--vendor/lib64/libplatformconfig.so|ff1149f8481a983dbc32fddb027848f9a15bba24
 vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so|9c192f00d234c08097b8be96e01ecfa17c62fdcf
-vendor/lib/vendor.qti.hardware.capabilityconfigstore@1.0.so|2e8bb7ee4f25313e961f495fd8584a25ba190548
--vendor/lib/libplatformconfig.so|b6148a7ab0ca80f8b8fe7a52114e3be03cce401a
 
 # Display (HDR) - from Z01R WW_user_100.10.107.123_20210131
 vendor/lib64/libhdr_tm.so|5e3fe8e2310dfed221da6694723daef715658e98
