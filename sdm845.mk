@@ -318,10 +318,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay
 
-# TextClassifier
-PRODUCT_PACKAGES += \
-    textclassifier.bundle1
-
 # Treble
 PRODUCT_USE_VNDK_OVERRIDE := true
 
