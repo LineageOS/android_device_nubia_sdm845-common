@@ -375,7 +375,7 @@ vendor/bin/msm_irqbalance|54c73b55125b13fa40abf3852bfae31bc217eddc
 vendor/etc/msm_irqbalance.conf|7394fdd30f52142ff99dd03e5ff991000c34a356
 
 # Listen - from Z01R WW_user_100.10.107.123_20210131
-vendor/lib64/hw/sound_trigger.primary.sdm845.so|1c2243387d01850ca749ff7f5945e6df8c76cbea
+vendor/lib64/hw/sound_trigger.primary.sdm845.so|36f4868c560deaffc07e661893e145167d707fbe
 vendor/lib64/libcapiv2svacnn.so|61e09c8bfc3dde3944389757340d12dcccf6f09a
 vendor/lib64/libcapiv2vop.so|074b2b6206f8e678d95f1b22732ad65d14ce2361
 vendor/lib64/libgcs-calwrapper.so|0636efe04b09ead6372d55a81c0a36deab525ebc
@@ -386,7 +386,7 @@ vendor/lib64/libjnihelper.so|b4bb59ba1255d13b480680810c91a3498da9ad4b
 vendor/lib64/liblistenjni.so|e75a2fe0ea2105e19855f0c3f0689c799667581b
 vendor/lib64/liblistensoundmodel2.so|9eb9837c444d031fef75f2c85c6d614cafa96fd5
 vendor/lib64/libmulawdec.so|d89b5a939b34a0dc0ac94041deb98746db341f95
-vendor/lib/hw/sound_trigger.primary.sdm845.so|9b0cdd71d272dc78613b8c2702ce4d7d387ee852
+vendor/lib/hw/sound_trigger.primary.sdm845.so|5454d56f9e19a8bcc00c1f3cd0bf305406c125a5
 vendor/lib/libadpcmdec.so|92bcb045be14c04f852971c7893105be6485459b
 vendor/lib/libcapiv2svacnn.so|14bed0114ab64f704150ff58c47eed31d428ee28
 vendor/lib/libcapiv2vop.so|b645c4077a6e704a5820aebe8ba65ebed0af42ee
