@@ -497,13 +497,11 @@ vendor/lib64/libperfgluelayer.so|15d08be130c6f06be6dde38cecfc5e98843f7666
 vendor/lib64/libqti-perfd-client.so|a02ad16eb631a7a4f81bf42140d309373dd54904
 vendor/lib64/libqti-perfd.so|5ff35c24cc10b47d3e055ca8177fe6b434d0b8a6
 vendor/lib64/libqti-util.so|05009227dd46dea3a6220a3a670de3c1d42d0690
-vendor/lib64/vendor.qti.hardware.perf@2.0.so|ce0d2e68d282e28c5272dff88be88f71f30befb7
 vendor/lib/libperfconfig.so|c1d35966a793bff58e7d338c837bead90e057e01
 vendor/lib/libperfgluelayer.so|f850a2c60e7b3bd79e0b5183cea682fcc62a1d28
 vendor/lib/libqti-perfd-client.so|678467644c31e36ff0f7e54963a511c1a6feb0a4
 vendor/lib/libqti-perfd.so|5720c909f2fb323410e81ca0b78d6d9be87e8e4e
 vendor/lib/libqti-util.so|29e70dd3e1119885bb302ee340270613f4cd58bc
-vendor/lib/vendor.qti.hardware.perf@2.0.so|3a8f64a6be4fc84e8d7231b9ab9c1cd550c4d174
 
 # Power-off alarm - from Z01R WW_user_100.10.107.123_20210131
 -product/app/PowerOffAlarm/PowerOffAlarm.apk|58ea56eb5d5913a634283c891647ba1849662f9d
