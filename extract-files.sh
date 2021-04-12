@@ -23,10 +23,6 @@ source "${HELPER}"
 
 function blob_fixup() {
     case "${1}" in
-    system_ext/etc/permissions/qcrilhook.xml | system_ext/etc/permissions/telephonyservice.xml)
-        # Move telephony packages to /system_ext
-        sed -i "s/\/product\/framework\//\/system_ext\/framework\//g" "${2}"
-        ;;
     esac
 }
 
