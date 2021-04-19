@@ -364,20 +364,6 @@ vendor/lib64/vendor.qti.imsrtpservice@2.0.so|99c2ea6fa6e08e9a1232a8f6b7dca17013a
 vendor/lib64/vendor.qti.imsrtpservice@2.1-service-Impl.so|967cfc852cda50416f4fc348283adb56665ff4e8
 vendor/lib64/vendor.qti.imsrtpservice@2.1.so|6387c3d892261078908107f83706409074ca6acb
 
-# IO prefetcher - from Z01R WW_user_100.10.107.123_20210131
-vendor/bin/hw/vendor.qti.hardware.iop@2.0-service|878d41ad8a1bea6fb44c0e5bf1cb2c715a469fd7
-vendor/etc/init/vendor.qti.hardware.iop@2.0-service.rc|fd11367b2585702190ef2577ce2ce6fc68f3a2f8
-vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so|3752f56f33a312fbff7752f5487a36b032adb4ff
-vendor/lib64/libqti-iopd-client.so|d7d7ba121e060b1b00519f9ef1bf51c03270bda7
-vendor/lib64/libqti-iopd.so|3dde51c8a80dc27703d5e809f8f24fbf58f5c7fd
-vendor/lib64/vendor.qti.hardware.iop@1.0.so|1ffc70c8805a4ed7f8e8f0ae24cca459f7d86f4e
-vendor/lib64/vendor.qti.hardware.iop@2.0.so|c161775030f5d510783f4c8ac21f164fb963c26c
-vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so|f653dcbdb5522df071f15221b919c9672b3df3f7
-vendor/lib/libqti-iopd-client.so|183660ed7f1a54c04323c5d606518ac19fc02a9d
-vendor/lib/libqti-iopd.so|a8a5425b3cc6d1c8e61fda3fcf2ab80ac36b60b9
-vendor/lib/vendor.qti.hardware.iop@1.0.so|1147a84dd01b19c0028411686deb3f22440e5346
-vendor/lib/vendor.qti.hardware.iop@2.0.so|0ef21bbbf74b7b085fc84a7b7a0c94a5daae1eba
-
 # IPA firmware - from NX619J PKQ1.180929.001
 vendor/etc/init/ipa_fws.rc|509042b86b4953ca1dc1b420942d9ded839ee502
 vendor/firmware/ipa_fws.b00|b2fca0cfa8e0bda146247c77ee4e3b051340b5c8
