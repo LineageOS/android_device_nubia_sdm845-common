@@ -648,7 +648,7 @@ service vendor.sensors-hal-1-0 /vendor/bin/hw/android.hardware.sensors@1.0-servi
     rlimit rtprio 10 10
 
 on property:vold.decrypt=trigger_restart_framework
-    restart vendor.audio-hal-2-0
+    restart vendor.audio-hal
     start vendor-sensor-sh
 
 on boot && property:persist.vendor.usb.controller.default=*
