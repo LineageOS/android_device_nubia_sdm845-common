@@ -421,7 +421,6 @@ vendor/lib64/libgcs-calwrapper.so|0636efe04b09ead6372d55a81c0a36deab525ebc
 vendor/lib64/libgcs-ipc.so|7c250e8f865785c76e2fbba2842cd1d7ada28b81
 vendor/lib64/libgcs-osal.so|7f25b5227524325d9abb00c1065dc57de3249acd
 vendor/lib64/libgcs.so|25b8e5a2a4e0cabf1ed0a15a8df4aab0a6c0e652
-vendor/lib64/libjnihelper.so|b4bb59ba1255d13b480680810c91a3498da9ad4b
 vendor/lib64/liblistenjni.so|e75a2fe0ea2105e19855f0c3f0689c799667581b
 vendor/lib64/liblistensoundmodel2.so|9eb9837c444d031fef75f2c85c6d614cafa96fd5
 vendor/lib64/libmulawdec.so|d89b5a939b34a0dc0ac94041deb98746db341f95
