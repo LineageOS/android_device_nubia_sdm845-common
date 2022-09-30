@@ -105,7 +105,6 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth.audio@2.1-impl:32 \
     audio.bluetooth.default \
-    libbthost_if \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor
 
@@ -148,10 +147,8 @@ PRODUCT_PACKAGES += \
     gralloc.sdm845 \
     hwcomposer.sdm845 \
     libdisplayconfig.qti \
-    libdisplayconfig.vendor \
     libqdMetaData \
     libtinyxml \
-    libtinyxml.vendor \
     memtrack.sdm845 \
     vendor.display.config@1.0.vendor \
     vendor.display.config@2.0 \
@@ -256,8 +253,7 @@ PRODUCT_COPY_FILES += \
 
 # Net
 PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor \
-    libandroid_net
+    android.system.net.netd@1.1.vendor
 
 # Neural Network
 PRODUCT_PACKAGES += \
@@ -296,7 +292,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
     libjson \
-    libjson.vendor \
     libprotobuf-cpp-full \
     librmnetctl \
     libxml2
