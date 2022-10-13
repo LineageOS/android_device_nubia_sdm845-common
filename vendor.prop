@@ -116,9 +116,6 @@ ro.bluetooth.wipower=false
 vendor.bluetooth.soc=cherokee
 vendor.qcom.bluetooth.soc=cherokee
 
-# Camera
-vendor.camera.aux.packagelist=com.android.camera,org.codeaurora.snapcam,org.lineageos.aperture,org.lineageos.aperture.dev
-
 # Charger
 ro.charger.enable_suspend=true
 
