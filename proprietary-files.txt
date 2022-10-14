@@ -498,13 +498,13 @@ vendor/lib64/libspcom.so|e38e18cebf7092593ea74d680ae7203cb3c4e811
 vendor/lib/libperipheral_client.so|7886baa3fb0f5d1bd7971d806a34118eae37af03
 vendor/lib/libspcom.so|4aa4d6147e960e7f00aa7880e37d63bd57bbd7b4
 
-# Power-off alarm - from Z01R WW_user_100.10.107.123_20210131
-product/app/PowerOffAlarm/PowerOffAlarm.apk|58ea56eb5d5913a634283c891647ba1849662f9d
-vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|55da4c1ff12b377c25480a146d63893c6ba6c436
-vendor/bin/power_off_alarm|8bcec18b5ada10edc5fa8ccbce663cf9ba84e867
-vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|c9877b6cae0353d5fdea5bc23dba77101b3d6980
-vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|aca244833b9c52fac7c8b5f8fa02763b4683270e
-vendor/lib64/vendor.qti.hardware.alarm@1.0.so|04b7cbd496705caa62eebc7e4d2101ed55d8a16a
+# Power-off alarm - from caymanslm - SKQ1.211103.001
+product/app/PowerOffAlarm/PowerOffAlarm.apk:system_ext/app/PowerOffAlarm/PowerOffAlarm.apk|f0a86fc11b38c059912303857bc4c79155430bcc
+vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|37b4999095331f4f3dd6c118ee0bdea4bdf7f003
+vendor/bin/power_off_alarm|04e651db91ca2598f1bf50453fdb49a63463b2dc
+vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|a03a9a1c818595b19272ea6ffb466e23a7fc3b05
+vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|f2b57130987c65a1dc596bf83a2b09e086df9286
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so|74675e4f720d75db031a0db4ca21463ebd331f34
 
 # QMI - from PNX - PNX_00WW_FIH-user-11-RKQ1.200906.002-00WW_6_21F-release-keys
 system_ext/etc/permissions/qti_permissions.xml|e6ff4572352b1a4f91b6b9d7cbb1cad9924410a0
