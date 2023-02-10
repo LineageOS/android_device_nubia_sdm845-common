@@ -1,1 +1,2 @@
 allow odrefresh aac_drc_prop:file { getattr open };
+allow odrefresh self:capability kill;
