@@ -433,6 +433,9 @@ firmware_directories /vendor/firmware_mnt/image/
 # socinfo
 /sys/devices/soc0                 serial_number            0000    root      root
 
+# Charger
+/sys/class/power_supply/battery   charging_enabled         0660    system    system
+
 # nubia add permissions for audio
 /dev/tas2555              0666   root       root
 /dev/tiload_node          0666   root       root
