@@ -32,10 +32,6 @@ vendor/lib64/libbtnv.so|395aad107d06bbff6dd2277c627a961a58ea728e
 vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|9eeea93297e772684ff04423d76cb7370ced30b0
 vendor/lib/libbtnv.so|c20530560bc7d3b64215ef4f588c5924230efaac
 
-# Bluetooth (aptX) - from raven - TP1A.220624.021
-system_ext/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
-system_ext/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
-
 # CNE - from PNX - PNX_00WW_FIH-user-11-RKQ1.200906.002-00WW_6_21F-release-keys
 system_ext/framework/com.quicinc.cne.api-V1.1-java.jar|88da95df5925ab3c173f951cfe56c95699908359
 system_ext/framework/com.quicinc.cne.constants-V1.0-java.jar|b30a8b9a9fad4dfb8ce231084ea0baf99f54931d
