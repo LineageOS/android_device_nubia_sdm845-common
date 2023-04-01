@@ -1,0 +1,4 @@
+allow untrusted_app zygote:unix_stream_socket getopt;
+allow untrusted_app_30 zygote:unix_stream_socket getopt;
+allow priv_app zygote:unix_stream_socket getopt;
+allow system_app zygote:unix_stream_socket getopt;
