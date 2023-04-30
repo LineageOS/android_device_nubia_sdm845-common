@@ -7,8 +7,7 @@ on boot
     chown system system /sys/class/leds/nubia_led/debug
     chown system system /sys/class/leds/vibrator/debug
 
-service vendor.light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.nubia_sdm845
-    interface android.hardware.light@2.0::ILight default
+service vendor.light-default /vendor/bin/hw/android.hardware.light-service.nubia_sdm845
     class hal
     user system
     group system

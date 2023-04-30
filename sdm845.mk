@@ -209,7 +209,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.nubia_sdm845
+    android.hardware.light-service.nubia_sdm845
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
