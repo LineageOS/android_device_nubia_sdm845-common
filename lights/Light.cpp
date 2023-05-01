@@ -17,6 +17,8 @@
 #define BATTERY_STATUS_FILE       "/sys/class/power_supply/battery/status"
 #define BATTERY_CAPACITY          "/sys/class/power_supply/battery/capacity"
 
+#define BATTERY_STATUS_FULL         "Full"
+#define BATTERY_STATUS_DISCHARGING  "Discharging"
 #define BATTERY_STATUS_CHARGING     "Charging"
 
 #define BLINK_MODE_ON    3
@@ -137,6 +139,14 @@ int getBatteryStatus()
 
     capacity = get(BATTERY_CAPACITY);
 
+    if (0 == strncmp(status_str, BATTERY_STATUS_FULL, 4)) {
+            return BATTERY_FULL;
+        }
+
+    if (0 == strncmp(status_str, BATTERY_STATUS_DISCHARGING, 11)) {
+            return BATTERY_FREE;
+        }
+
     if (0 == strncmp(status_str, BATTERY_STATUS_CHARGING, 8)) {
         if (capacity < 90) {
             return BATTERY_CHARGING;
@@ -198,6 +208,7 @@ static void handleNotification(const HwLightState& state) {
     }
 
     if (onMs > 0 && offMs > 0) {
+        LOG(WARNING) << "BLINKING";
 	// Notification -- Set top led blink (green)
         set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
         set(NUBIA_FADE, "3 0 4");
@@ -210,6 +221,7 @@ static void handleNotification(const HwLightState& state) {
         int battery_state = getBatteryStatus();
 
 	if(battery_state == BATTERY_CHARGING) {
+            LOG(WARNING) << "BATTERY CHARGING";
             // Charging -- Set top led light up (red)
             set(NUBIA_LED_COLOR, NUBIA_LED_RED);
             set(NUBIA_FADE, "0 0 0");
@@ -218,6 +230,7 @@ static void handleNotification(const HwLightState& state) {
             // Set back led strip scrolling (green)
             set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_CHARGING);
 	}else if (battery_state == BATTERY_LOW) {
+            LOG(WARNING) << "BATTERY LOW";
             // Low -- Set top led blink (red)
             set(NUBIA_LED_COLOR, NUBIA_LED_RED);
             set(NUBIA_FADE, "3 0 4");
@@ -226,6 +239,7 @@ static void handleNotification(const HwLightState& state) {
             // Set back led strip blink(red)
             set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_LOW);
 	}else if (battery_state == BATTERY_FULL) {
+            LOG(WARNING) << "BATTERY FULL";
             // Full -- Set top led light up (green)
             set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
             set(NUBIA_FADE, "0 0 0");
@@ -233,6 +247,12 @@ static void handleNotification(const HwLightState& state) {
             set(NUBIA_LED_MODE, BLINK_MODE_CONST);
             // Set back led strip scrolling (rainbow)
             set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_FULL);
+	} else if (battery_state == BATTERY_FREE) {
+            LOG(WARNING) << "BATTERY FREE OR DISCHARGING";
+            // Disable blinking to start. Turn off all colors of led
+            set(NUBIA_LED_MODE, BLINK_MODE_OFF);
+            // turn off back led strip
+            set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
 	}
     }
 }
