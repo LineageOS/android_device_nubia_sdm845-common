@@ -46,6 +46,8 @@
 #define BACK_LED_BATTERY_FULL      11
 #define BACK_LED_BATTERY_LOW       33
 
+static int32_t active_status = 0;
+
 enum battery_status {
     BATTERY_UNKNOWN = 0,
     BATTERY_LOW,
@@ -180,44 +182,12 @@ static void handleBacklight(const HwLightState& state) {
     set(LCD_LED, brightness);
 }
 
-static void handleNotification(const HwLightState& state) {
 
-    uint32_t brightness = getScaledBrightness(state, MAX_LED_BRIGHTNESS);
-
-    int32_t onMs = state.flashOnMs;
-    int32_t offMs = state.flashOffMs;
-
-    // Disable blinking to start. Turn off all colors of led
-    // disable green led
-    set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
-    set(NUBIA_LED_MODE, BLINK_MODE_OFF);
-    // disable red led
-    set(NUBIA_LED_COLOR, NUBIA_LED_RED);
-    set(NUBIA_LED_MODE, BLINK_MODE_OFF);
-    // set disable led
-    set(NUBIA_LED_COLOR, NUBIA_LED_DISABLE);
-    set(NUBIA_LED_MODE, BLINK_MODE_OFF);
-    set(NUBIA_FADE, "0 0 0");
-    set(NUBIA_GRADE, "100 255");
-    // turn off back led strip
-    set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
-
-    if (brightness <= 0)
-    {
-        return;
-    }
-
-    if (onMs > 0 && offMs > 0) {
-        LOG(DEBUG) << "BLINKING";
-	// Notification -- Set top led blink (green)
-        set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
-        set(NUBIA_FADE, "3 0 4");
-        set(NUBIA_GRADE, "0 100");
-        set(NUBIA_LED_MODE, BLINK_MODE_ON);
-	// Set back led strip breath (green)
-        set(BACK_LED_EFFECT_FILE, BACK_LED_NOTIFICATION);
-    } else {
-        // Get battery status
+/*
+ * Set the the LED color and blinking mode for battery states.
+ */
+static void setBatteryBreathLight() {
+    if (active_status == BREATH_SOURCE_BATTERY) {
         int battery_state = getBatteryStatus();
 
 	if(battery_state == BATTERY_CHARGING) {
@@ -257,8 +227,87 @@ static void handleNotification(const HwLightState& state) {
     }
 }
 
+/*
+ * Set the the LED color and blinking mode for notification breath light.
+ */
+static void setNotificationBreathLight() {
+    set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+    set(NUBIA_FADE, "3 0 4");
+    set(NUBIA_GRADE, "0 100");
+    set(NUBIA_LED_MODE, BLINK_MODE_ON);
+    // Set back led strip breath (green)
+    set(BACK_LED_EFFECT_FILE, BREATH_SOURCE_NOTIFICATION);
+}
+
+/*
+ * Set the LED color, blinking mode for breath light, and determine the primary event
+ */
+static uint32_t setBreathLightLocked(uint32_t event_source, const HwLightState& state){
+    uint32_t brightness = getScaledBrightness(state, MAX_LED_BRIGHTNESS);
+
+    if (brightness > 0) {
+        active_status |= event_source;
+    } else {
+        active_status &= ~event_source;
+    }
+
+    if(active_status == 0) { //nothing, close all
+        // disable green led
+        set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+        set(NUBIA_LED_MODE, BLINK_MODE_OFF);
+        // disable red led
+        set(NUBIA_LED_COLOR, NUBIA_LED_RED);
+        set(NUBIA_LED_MODE, BLINK_MODE_OFF);
+        // set disable led
+        set(NUBIA_LED_COLOR, NUBIA_LED_DISABLE);
+        set(NUBIA_LED_MODE, BLINK_MODE_OFF);
+        set(NUBIA_FADE, "0 0 0");
+        set(NUBIA_GRADE, "100 255");
+        // turn off back led strip
+        set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
+        return 0;
+    }
+
+    uint32_t saved_status = 0;
+    if (active_status & BREATH_SOURCE_BATTERY) {
+        if ((active_status & BREATH_SOURCE_NOTIFICATION) || (active_status & BREATH_SOURCE_ATTENTION)) {
+            // pause BREATH_SOURCE_BATTERY event and save its status
+            saved_status = active_status;
+            active_status &= ~BREATH_SOURCE_BATTERY;
+        } else {
+            // BREATH_SOURCE_BATTERY is the primary event
+            setBatteryBreathLight();
+            return 0;
+        }
+    }
+
+    if (active_status & BREATH_SOURCE_NOTIFICATION || active_status & BREATH_SOURCE_ATTENTION) {
+        setNotificationBreathLight();
+    }
+
+    if (saved_status & BREATH_SOURCE_BATTERY) {
+        active_status |= BREATH_SOURCE_BATTERY;
+        saved_status &= ~BREATH_SOURCE_BATTERY;
+        if (saved_status != 0) {
+            // resume saved event
+            if (saved_status & BREATH_SOURCE_NOTIFICATION || saved_status & BREATH_SOURCE_ATTENTION) {
+                setNotificationBreathLight();
+            }
+        }
+    }
+    return 0;
+}
+
 static inline bool isLit(const HwLightState& state) {
     return state.color & 0x00ffffff;
+}
+
+static void handleNotification(const HwLightState& state) {
+    setBreathLightLocked(BREATH_SOURCE_NOTIFICATION, state);
+}
+
+static void handleBattery(const HwLightState& state){
+    setBreathLightLocked(BREATH_SOURCE_BATTERY, state);
 }
 
 /* Keep sorted in the order of importance. */
@@ -285,7 +334,7 @@ ndk::ScopedAStatus Lights::setLightState(int id, const HwLightState& state) {
             handleBacklight(state);
             return ndk::ScopedAStatus::ok();
         case (int) LightType::BATTERY:
-            handleNotification(state);
+            handleBattery(state);
             return ndk::ScopedAStatus::ok();
         case (int) LightType::NOTIFICATIONS:
             handleNotification(state);
