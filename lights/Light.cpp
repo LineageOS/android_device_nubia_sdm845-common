@@ -208,7 +208,7 @@ static void handleNotification(const HwLightState& state) {
     }
 
     if (onMs > 0 && offMs > 0) {
-        LOG(WARNING) << "BLINKING";
+        LOG(DEBUG) << "BLINKING";
 	// Notification -- Set top led blink (green)
         set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
         set(NUBIA_FADE, "3 0 4");
@@ -221,7 +221,7 @@ static void handleNotification(const HwLightState& state) {
         int battery_state = getBatteryStatus();
 
 	if(battery_state == BATTERY_CHARGING) {
-            LOG(WARNING) << "BATTERY CHARGING";
+            LOG(DEBUG) << "BATTERY CHARGING";
             // Charging -- Set top led light up (red)
             set(NUBIA_LED_COLOR, NUBIA_LED_RED);
             set(NUBIA_FADE, "0 0 0");
@@ -230,7 +230,7 @@ static void handleNotification(const HwLightState& state) {
             // Set back led strip scrolling (green)
             set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_CHARGING);
 	}else if (battery_state == BATTERY_LOW) {
-            LOG(WARNING) << "BATTERY LOW";
+            LOG(DEBUG) << "BATTERY LOW";
             // Low -- Set top led blink (red)
             set(NUBIA_LED_COLOR, NUBIA_LED_RED);
             set(NUBIA_FADE, "3 0 4");
@@ -239,7 +239,7 @@ static void handleNotification(const HwLightState& state) {
             // Set back led strip blink(red)
             set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_LOW);
 	}else if (battery_state == BATTERY_FULL) {
-            LOG(WARNING) << "BATTERY FULL";
+            LOG(DEBUG) << "BATTERY FULL";
             // Full -- Set top led light up (green)
             set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
             set(NUBIA_FADE, "0 0 0");
@@ -248,7 +248,7 @@ static void handleNotification(const HwLightState& state) {
             // Set back led strip scrolling (rainbow)
             set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_FULL);
 	} else if (battery_state == BATTERY_FREE) {
-            LOG(WARNING) << "BATTERY FREE OR DISCHARGING";
+            LOG(DEBUG) << "BATTERY FREE OR DISCHARGING";
             // Disable blinking to start. Turn off all colors of led
             set(NUBIA_LED_MODE, BLINK_MODE_OFF);
             // turn off back led strip
