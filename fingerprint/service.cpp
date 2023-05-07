@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service.xiaomi_sdm845"
+#define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service.nubia_sdm845"
 
 #include <android/log.h>
 #include <hidl/HidlTransportSupport.h>
@@ -40,14 +40,6 @@ status_t BiometricsFingerprint::registerAsSystemService() {
         goto fail;
     } else {
         ALOGI("Successfully registered IBiometricsFingerprint");
-    }
-
-    ret = IXiaomiFingerprint::registerAsService();
-    if (ret != 0) {
-        ALOGE("Failed to register IXiaomiFingerprint (%d)", ret);
-        goto fail;
-    } else {
-        ALOGI("Successfully registered IXiaomiFingerprint");
     }
 
 fail:

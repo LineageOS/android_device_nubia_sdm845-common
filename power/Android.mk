@@ -2,7 +2,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := libpower_feature.xiaomi_sdm845
+LOCAL_MODULE := libpower_feature.nubia_sdm845
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_VENDOR_MODULE := true

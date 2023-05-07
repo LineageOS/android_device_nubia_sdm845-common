@@ -188,6 +188,6 @@ Value* VerifyTrustZoneFn(const char* name, State* state,
     return StringValue(strdup(ret ? "1" : "0"));
 }
 
-void Register_librecovery_updater_xiaomi() {
-    RegisterFunction("xiaomi.verify_trustzone", VerifyTrustZoneFn);
+void Register_librecovery_updater_nubia() {
+    RegisterFunction("nubia.verify_trustzone", VerifyTrustZoneFn);
 }
