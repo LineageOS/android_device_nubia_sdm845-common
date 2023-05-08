@@ -19,6 +19,9 @@
 
 # Fingerprint devices
 /dev/goodix_fp                                u:object_r:fingerprint_device:s0
+/dev/goodix_fp_l                              u:object_r:fingerprint_device:s0
+/dev/goodix_fp_r                              u:object_r:fingerprint_device:s0
+/dev/silead_fp                                u:object_r:fingerprint_device:s0
 
 # GPS devices
 /dev/bbd_control                              u:object_r:gps_device:s0
