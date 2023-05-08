@@ -213,12 +213,56 @@ IBiometricsFingerprint* BiometricsFingerprint::getInstance() {
     return sInstance;
 }
 
+typedef struct fp_dev {
+    const char *dev_name;
+    const char *dev_id;
+    const char *chip_name;
+} fp_dev_type;
+
+fp_dev_type fp_dev_path_list[] = {
+    {
+        .dev_name = "/dev/goodix_fp",
+        .dev_id = "fingerprint",
+        .chip_name = "goodix",
+    },
+    {
+        .dev_name = "/dev/goodix_fp_l",
+        .dev_id = "fingerprint",
+        .chip_name = "goodix",
+    },
+    {
+        .dev_name = "/dev/goodix_fp_r",
+        .dev_id = "fingerprint",
+        .chip_name = "goodix",
+    },
+    {
+        .dev_name = "/dev/silead_fp",
+        .dev_id = "fingerprint.silead",
+        .chip_name = "silead",
+    },
+
+};
+
 fingerprint_device_t* BiometricsFingerprint::openHal() {
     int err;
+    int i;
+    int len = sizeof(fp_dev_path_list) / sizeof(fp_dev_type);
+
     const hw_module_t *hw_mdl = nullptr;
+    const char *fingerprint_id = "fingerprint.silead"; // Default
+
+    ALOGD("OpenHal: autodetect start...");
+    for (i = 0;i < len; i++) {
+        if (!access(fp_dev_path_list[i].dev_name, F_OK)) {
+            fingerprint_id = fp_dev_path_list[i].dev_id;
+            ALOG(LOG_VERBOSE, LOG_TAG, "fp_dev_path_list[%d] is: %s", i, fp_dev_path_list[i].dev_name);
+            ALOG(LOG_VERBOSE, LOG_TAG, "Detect fingerprint id: %s, chip_name: %s\n", fingerprint_id, fp_dev_path_list[i].chip_name);
+        }
+    }
+
     ALOGD("Opening fingerprint hal library...");
-    if (0 != (err = hw_get_module(FINGERPRINT_HARDWARE_MODULE_ID, &hw_mdl))) {
-        ALOGE("Can't open fingerprint HW Module, error: %d", err);
+    if (0 != (err = hw_get_module(fingerprint_id, &hw_mdl))) {
+	ALOGE("Can't open fingerprint HW Module, fingerprint id: %s, error: %d", fingerprint_id, err);
         return nullptr;
     }
 
