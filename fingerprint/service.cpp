@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
- * Copyright (C) 2020 The LineageOS Project
+ * Copyright (C) 2023 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,49 +18,29 @@
 #define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service.nubia_sdm845"
 
 #include <android/log.h>
+#include <hidl/HidlSupport.h>
 #include <hidl/HidlTransportSupport.h>
-
+#include <android/hardware/biometrics/fingerprint/2.1/IBiometricsFingerprint.h>
+#include <android/hardware/biometrics/fingerprint/2.1/types.h>
 #include "BiometricsFingerprint.h"
 
-// libhwbinder:
+using android::hardware::biometrics::fingerprint::V2_1::IBiometricsFingerprint;
+using android::hardware::biometrics::fingerprint::V2_1::implementation::BiometricsFingerprint;
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
-
-// Generated HIDL files
-using android::hardware::biometrics::fingerprint::V2_1::implementation::BiometricsFingerprint;
-
-using android::status_t;
-
-status_t BiometricsFingerprint::registerAsSystemService() {
-    status_t ret = 0;
-
-    ret = IBiometricsFingerprint::registerAsService();
-    if (ret != 0) {
-        ALOGE("Failed to register IBiometricsFingerprint (%d)", ret);
-        goto fail;
-    } else {
-        ALOGI("Successfully registered IBiometricsFingerprint");
-    }
-
-fail:
-    return ret;
-}
+using android::sp;
 
 int main() {
-    android::sp<BiometricsFingerprint> service = nullptr;
-
-    service = new BiometricsFingerprint();
-    if (service == nullptr) {
-        ALOGE("Instance of BiometricsFingerprint is null");
-        return 1;
-    }
+    android::sp<IBiometricsFingerprint> bio = BiometricsFingerprint::getInstance();
 
     configureRpcThreadpool(1, true /*callerWillJoin*/);
 
-    status_t status = service->registerAsSystemService();
-    if (status != android::OK) {
-        ALOGE("Cannot register service for Fingerprint HAL(%d).", status);
-        return 1;
+    if (bio != nullptr) {
+        if (::android::OK != bio->registerAsService()) {
+            return 1;
+        }
+    } else {
+        ALOGE("Can't create instance of BiometricsFingerprint, nullptr");
     }
 
     joinRpcThreadpool();
