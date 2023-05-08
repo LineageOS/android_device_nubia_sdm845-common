@@ -28,6 +28,14 @@ namespace light {
 namespace V2_0 {
 namespace implementation {
 
+#define MODE_OFF           2
+#define MODE_CONSTANT_ON   1
+#define MODE_AUTO_BLINK    3
+
+#define LED_CHANNEL_RED      48
+#define LED_CHANNEL_GREEN    64
+#define LED_CHANNEL_BLUE     80
+
 /*
  * Write value to path and close file.
  */
@@ -51,8 +59,6 @@ static T get(const std::string& path, const T& def) {
 }
 
 static constexpr int kDefaultMaxBrightness = 255;
-static constexpr int kRampSteps = 50;
-static constexpr int kRampMaxStepDurationMs = 5;
 
 static uint32_t getBrightness(const LightState& state) {
     uint32_t alpha, red, green, blue;
@@ -85,8 +91,8 @@ static uint32_t rgbToBrightness(const LightState& state) {
 Light::Light() {
     mLights.emplace(Type::ATTENTION, std::bind(&Light::handleNotification, this, std::placeholders::_1, 0));
     mLights.emplace(Type::BACKLIGHT, std::bind(&Light::handleBacklight, this, std::placeholders::_1));
-    mLights.emplace(Type::BATTERY, std::bind(&Light::handleBattery, this, std::placeholders::_1));
-    mLights.emplace(Type::NOTIFICATIONS, std::bind(&Light::handleNotification, this, std::placeholders::_1, 1));
+    mLights.emplace(Type::BATTERY, std::bind(&Light::handleNotification, this, std::placeholders::_1, 1));
+    mLights.emplace(Type::NOTIFICATIONS, std::bind(&Light::handleNotification, this, std::placeholders::_1, 2));
 }
 
 void Light::handleBacklight(const LightState& state) {
@@ -101,54 +107,6 @@ void Light::handleBacklight(const LightState& state) {
     set("/sys/class/backlight/panel0-backlight/brightness", brightness);
 }
 
-void Light::handleBattery(const LightState& state) {
-    uint32_t whiteBrightness = getBrightness(state);
-
-    uint32_t onMs = state.flashMode == Flash::TIMED ? state.flashOnMs : 0;
-    uint32_t offMs = state.flashMode == Flash::TIMED ? state.flashOffMs : 0;
-
-    auto getScaledDutyPercent = [](int brightness) -> std::string {
-        std::string output;
-        for (int i = 0; i <= kRampSteps; i++) {
-            if (i != 0) {
-                output += ",";
-            }
-            if (i <= kRampSteps / 2) {
-                output += "0";
-            } else {
-                output += std::to_string((i - kRampSteps / 2) * 100 * brightness /
-                                         (kDefaultMaxBrightness * (kRampSteps/2)));
-            }
-        }
-        return output;
-    };
-
-    // Disable blinking to start
-    set("/sys/class/leds/white/blink", 0);
-
-    if (onMs > 0 && offMs > 0) {
-        uint32_t pauseLo, pauseHi, stepDuration;
-        stepDuration = 10;
-        if (stepDuration * kRampSteps > onMs) {
-            pauseHi = 0;
-        } else {
-            pauseHi = onMs - kRampSteps * stepDuration;
-            pauseLo = offMs - kRampSteps * stepDuration;
-        }
-
-        set("/sys/class/leds/white/start_idx", 0);
-        set("/sys/class/leds/white/duty_pcts", getScaledDutyPercent(whiteBrightness));
-        set("/sys/class/leds/white/pause_lo", pauseLo);
-        set("/sys/class/leds/white/pause_hi", pauseHi);
-        set("/sys/class/leds/white/ramp_step_ms", stepDuration);
-
-        // Start blinking
-        set("/sys/class/leds/white/blink", 1);
-    } else {
-        set("/sys/class/leds/white/brightness", whiteBrightness);
-    }
-}
-
 void Light::handleNotification(const LightState& state, size_t index) {
     mLightStates.at(index) = state;
 
@@ -160,47 +118,63 @@ void Light::handleNotification(const LightState& state, size_t index) {
         }
     }
 
-    uint32_t whiteBrightness = getBrightness(stateToUse);
+    uint32_t brightness = getBrightness(stateToUse);
 
     uint32_t onMs = stateToUse.flashMode == Flash::TIMED ? stateToUse.flashOnMs : 0;
     uint32_t offMs = stateToUse.flashMode == Flash::TIMED ? stateToUse.flashOffMs : 0;
 
-    auto getScaledDutyPercent = [](int brightness) -> std::string {
-        std::string output;
-        for (int i = 0; i <= kRampSteps; i++) {
-            if (i != 0) {
-                output += ",";
-            }
-            output += std::to_string(i * 100 * brightness / (kDefaultMaxBrightness * kRampSteps));
-        }
-        return output;
-    };
 
-    // Disable blinking to start
-    set("/sys/class/leds/white/blink", 0);
+    // Disable blinking to start. Turn off all colors of led
+    set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
+    set("/sys/class/leds/nubia_led/blink_mode", MODE_OFF);
+    set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
+    set("/sys/class/leds/nubia_led/blink_mode", MODE_OFF);
+    set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_BLUE);
+    set("/sys/class/leds/nubia_led/blink_mode", MODE_OFF);
+    LOG(DEBUG) << "Disable blink ";
+    if (brightness <= 0)
+    {
+        return;
+    }
 
     if (onMs > 0 && offMs > 0) {
-        uint32_t pauseLo, pauseHi, stepDuration;
-        if (kRampMaxStepDurationMs * kRampSteps > onMs) {
-            stepDuration = onMs / kRampSteps;
-            pauseHi = 0;
-        } else {
-            stepDuration = kRampMaxStepDurationMs;
-            pauseHi = onMs - kRampSteps * stepDuration;
-            pauseLo = offMs - kRampSteps * stepDuration;
-        }
+        // Turn Of Red Led
+        set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
+        set("/sys/class/leds/nubia_led/blink_mode", MODE_AUTO_BLINK);
 
-        set("/sys/class/leds/white/start_idx", 0);
-        set("/sys/class/leds/white/duty_pcts", getScaledDutyPercent(whiteBrightness));
-        set("/sys/class/leds/white/pause_lo", pauseLo);
-        set("/sys/class/leds/white/pause_hi", pauseHi);
-        set("/sys/class/leds/white/ramp_step_ms", stepDuration);
+        // Turn Of Green Led, it is yellow now
+        set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
+        set("/sys/class/leds/nubia_led/blink_mode", MODE_AUTO_BLINK);
 
+        set("/sys/class/leds/nubia_led/fade_parameter", "3 0 4");
+        set("/sys/class/leds/nubia_led/grade_parameter", "10 100");
         // Start blinking
-        set("/sys/class/leds/white/blink", 1);
+        set("/sys/class/leds/nubia_led/blink_mode", MODE_AUTO_BLINK);
     } else {
-        set("/sys/class/leds/white/brightness", whiteBrightness);
+        uint32_t capacity = get("/sys/class/power_supply/battery/capacity", 0);
+        std::string defualt = "Discharging";
+        std::string status = get("/sys/class/power_supply/battery/status", defualt);
+        if (capacity >= 90 || status == "FULL")
+        {
+            set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
+        }else if (10 <= capacity < 90 || status == "CHARGING")
+        {
+            set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
+            set("/sys/class/leds/nubia_led/blink_mode", MODE_CONSTANT_ON);
+            set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
+        }else if (0 < capacity <= 10 || status == "LOW") {
+            set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
+        }
+        set("/sys/class/leds/nubia_led/fade_parameter", "0 1 1");
+        set("/sys/class/leds/nubia_led/grade_parameter", "20 200");
+        set("/sys/class/leds/nubia_led/blink_mode", MODE_CONSTANT_ON);
+        LOG(DEBUG) << "battery_status " << status
+               << " (capacity " << capacity << ")";
     }
+    LOG(DEBUG) << base::StringPrintf(
+        "handleRgb: mode=%d, color=%08X, onMs=%d, offMs=%d",
+        static_cast<std::underlying_type<Flash>::type>(stateToUse.flashMode), stateToUse.color,
+        onMs, offMs);
 }
 
 Return<Status> Light::setLight(Type type, const LightState& state) {
