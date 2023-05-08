@@ -36,6 +36,14 @@ namespace implementation {
 #define LED_CHANNEL_GREEN    64
 #define LED_CHANNEL_BLUE     80
 
+#define BACK_LED_EFFECT_FILE       "/sys/class/leds/aw22xxx_led/effect"
+
+#define BACK_LED_OFF               0
+#define BACK_LED_NOTIFICATION      2
+#define BACK_LED_BATTERY_CHARGING  8
+#define BACK_LED_BATTERY_FULL      11
+#define BACK_LED_BATTERY_LOW       33
+
 /*
  * Write value to path and close file.
  */
@@ -131,6 +139,8 @@ void Light::handleNotification(const LightState& state, size_t index) {
     set("/sys/class/leds/nubia_led/blink_mode", MODE_OFF);
     set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_BLUE);
     set("/sys/class/leds/nubia_led/blink_mode", MODE_OFF);
+    // turn off back led strip
+    set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
     LOG(DEBUG) << "Disable blink ";
     if (brightness <= 0)
     {
@@ -150,6 +160,8 @@ void Light::handleNotification(const LightState& state, size_t index) {
         set("/sys/class/leds/nubia_led/grade_parameter", "10 100");
         // Start blinking
         set("/sys/class/leds/nubia_led/blink_mode", MODE_AUTO_BLINK);
+	// Set back led strip breath (green)
+        set(BACK_LED_EFFECT_FILE, BACK_LED_NOTIFICATION);
     } else {
         uint32_t capacity = get("/sys/class/power_supply/battery/capacity", 0);
         std::string defualt = "Discharging";
@@ -157,13 +169,19 @@ void Light::handleNotification(const LightState& state, size_t index) {
         if (capacity >= 90 || status == "FULL")
         {
             set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
+            // Set back led strip scrolling (rainbow)
+            set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_FULL);
         }else if (10 <= capacity < 90 || status == "CHARGING")
         {
             set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
             set("/sys/class/leds/nubia_led/blink_mode", MODE_CONSTANT_ON);
             set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
+            // Set back led strip scrolling (green)
+            set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_CHARGING);
         }else if (0 < capacity <= 10 || status == "LOW") {
             set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
+            // Set back led strip blink(red)
+            set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_LOW);
         }
         set("/sys/class/leds/nubia_led/fade_parameter", "0 1 1");
         set("/sys/class/leds/nubia_led/grade_parameter", "20 200");
