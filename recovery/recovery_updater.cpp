@@ -24,6 +24,7 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <time.h>
 #include <unistd.h>
 
 #include <string>
@@ -36,10 +37,10 @@
 
 #define ALPHABET_LEN 256
 
-#define XBL_PART_PATH "/dev/block/bootdevice/by-name/xbl_a"
-#define TZ_VER_STR "QC_IMAGE_VERSION_STRING=TZ."
-#define TZ_VER_STR_LEN 27
-#define TZ_VER_BUF_LEN 255
+#define MODEM_PART_PATH "/dev/block/bootdevice/by-name/modem"
+#define MODEM_VER_STR "Time_Stamp\": \""
+#define MODEM_VER_STR_LEN 14
+#define MODEM_VER_BUF_LEN 20
 
 /* Boyer-Moore string search implementation from Wikipedia */
 
@@ -159,17 +160,18 @@ err_ret:
     return ret;
 }
 
-/* verify_trustzone("TZ_VERSION", "TZ_VERSION", ...) */
-Value* VerifyTrustZoneFn(const char* name, State* state,
+/* verify_modem("MODEM_VERSION", "MODEM_VERSION", ...) */
+Value* VerifyModemFn(const char* name, State* state,
                      const std::vector<std::unique_ptr<Expr>>& argv) {
-    char current_tz_version[TZ_VER_BUF_LEN];
+    char current_modem_version[MODEM_VER_BUF_LEN];
     int ret;
+    struct tm tm1, tm2;
 
-    ret = get_info(current_tz_version, TZ_VER_BUF_LEN, TZ_VER_STR, TZ_VER_STR_LEN,
-                   XBL_PART_PATH);
+    ret = get_info(current_modem_version, MODEM_VER_BUF_LEN, MODEM_VER_STR, MODEM_VER_STR_LEN,
+                   MODEM_PART_PATH);
     if (ret) {
-        return ErrorAbort(state, kFreadFailure,
-                          "%s() failed to read current TZ version: %d", name, ret);
+        return ErrorAbort(state, kVendorFailure,
+                          "%s() failed to read current MODEM build time-stamp: %d", name, ret);
     }
 
     std::vector<std::string> args;
@@ -177,9 +179,14 @@ Value* VerifyTrustZoneFn(const char* name, State* state,
         return ErrorAbort(state, kArgsParsingFailure, "%s() error parsing arguments", name);
     }
 
-    ret = 0;
-    for (auto &tz_version : args) {
-        if (strncmp(tz_version.c_str(), current_tz_version, tz_version.length()) == 0) {
+    memset(&tm1, 0, sizeof(tm));
+    strptime(current_modem_version, "%Y-%m-%d %H:%M:%S", &tm1);
+
+    for (auto& modem_version : args) {
+        memset(&tm2, 0, sizeof(tm));
+        strptime(modem_version.c_str(), "%Y-%m-%d %H:%M:%S", &tm2);
+
+        if (mktime(&tm1) >= mktime(&tm2)) {
             ret = 1;
             break;
         }
@@ -189,5 +196,5 @@ Value* VerifyTrustZoneFn(const char* name, State* state,
 }
 
 void Register_librecovery_updater_nubia() {
-    RegisterFunction("nubia.verify_trustzone", VerifyTrustZoneFn);
+    RegisterFunction("nubia.verify_modem", VerifyModemFn);
 }

@@ -26,11 +26,11 @@ def IncrementalOTA_InstallEnd(info):
   return
 
 def FullOTA_Assertions(info):
-  AddTrustZoneAssertion(info, info.input_zip)
+  AddModemAssertion(info, info.input_zip)
   return
 
 def IncrementalOTA_Assertions(info):
-  AddTrustZoneAssertion(info, info.target_zip)
+  AddModemAssertion(info, info.target_zip)
   return
 
 def AddImage(info, basename, dest):
@@ -48,12 +48,15 @@ def OTA_InstallEnd(info):
   AddImage(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
   return
 
-def AddTrustZoneAssertion(info, input_zip):
+def AddModemAssertion(info, input_zip):
   android_info = info.input_zip.read("OTA/android-info.txt")
-  m = re.search(r'require\s+version-trustzone\s*=\s*(\S+)', android_info)
-  if m:
-    versions = m.group(1).split('|')
-    if len(versions) and '*' not in versions:
-      cmd = 'assert(nubia.verify_trustzone(' + ','.join(['"%s"' % tz for tz in versions]) + ') == "1" || abort("ERROR: This package requires firmware from an Android 10 based MIUI build. Please upgrade firmware and retry!"););'
-      info.script.AppendExtra(cmd)
+  m = re.search(r'require\s+version-modem\s*=\s*(.+)', android_info)
+  nubiaUI_version = re.search(r'require\s+version-nubiaUI\s*=\s*(.+)', android_info)
+  if m and nubiaUI_version:
+    timestamp = m.group(1).rstrip()
+    firmware_version = nubiaUI_version.group(1).rstrip()
+    if ((len(timestamp) and '*' not in timestamp) and \
+        (len(firmware_version) and '*' not in firmware_version)):
+      cmd = 'assert(nubia.verify_modem("{}") == "1" || abort("ERROR: This package requires firmware from nubiaUI {}  or newer. Please upgrade firmware and retry!"););'
+      info.script.AppendExtra(cmd.format(timestamp, firmware_version))
   return
