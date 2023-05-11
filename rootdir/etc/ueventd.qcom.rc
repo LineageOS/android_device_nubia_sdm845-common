@@ -430,6 +430,9 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/graphics/fb0     msm_cmd_autorefresh_en   0664    system  graphics
 /sys/class/graphics/fb0     dynamic_bitclk           0664    system  graphics
 
+# socinfo
+/sys/devices/soc0                 serial_number            0000    root      root
+
 # nubia add permissions for audio
 /dev/tas2555              0666   root       root
 /dev/tiload_node          0666   root       root
