@@ -1,1 +1,5 @@
 dontaudit init { bt_firmware_file firmware_file }:filesystem getattr;
+
+# Light HAL
+allow init sysfs_graphics:file { open read write };
+allow init sysfs_leds:lnk_file read;

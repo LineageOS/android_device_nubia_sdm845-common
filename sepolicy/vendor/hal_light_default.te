@@ -1,0 +1,7 @@
+allow hal_light_default sysfs_battery_supply:dir search;
+allow hal_light_default sysfs_battery_supply:file { getattr open read };
+
+allow hal_light_default sysfs_batteryinfo:file { r_file_perms };
+allow hal_light_default sysfs_batteryinfo:dir { r_dir_perms };
+
+allow hal_light_default sysfs:file { getattr open read write };

@@ -10,3 +10,9 @@ type sysfs_wireless_supply, sysfs_type, fs_type;
 
 type persist_audio_file, file_type, vendor_persist_type;
 type persist_camera_file, file_type, vendor_persist_type;
+
+# Light Sensor
+type sysfs_light_sensor, sysfs_type, fs_type;
+
+# Proximity Sensor
+type sysfs_proximity_sensor, sysfs_type, fs_type;
