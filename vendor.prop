@@ -97,7 +97,6 @@ persist.vendor.bt.a2dp_offload_cap=true
 persist.vendor.btstack.a2dp_offload_cap=sbc-aac-ldac
 persist.vendor.btstack.enable.splita2dp=true
 ro.bluetooth.emb_wp_mode=false
-ro.bluetooth.library_name=libbluetooth_qti.so
 ro.bluetooth.wipower=false
 vendor.bluetooth.soc=cherokee
 vendor.qcom.bluetooth.soc=cherokee
