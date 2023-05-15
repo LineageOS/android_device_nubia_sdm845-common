@@ -472,15 +472,15 @@ vendor/lib/libqti-iopd.so|a8a5425b3cc6d1c8e61fda3fcf2ab80ac36b60b9
 vendor/lib/vendor.qti.hardware.iop@1.0.so|1147a84dd01b19c0028411686deb3f22440e5346
 vendor/lib/vendor.qti.hardware.iop@2.0.so|0ef21bbbf74b7b085fc84a7b7a0c94a5daae1eba
 
-# IPA firmware - from Z01R WW_user_100.10.107.123_20210131
+# IPA firmware - from NX619J PKQ1.180929.001
 vendor/etc/init/ipa_fws.rc|509042b86b4953ca1dc1b420942d9ded839ee502
 vendor/firmware/ipa_fws.b00|b2fca0cfa8e0bda146247c77ee4e3b051340b5c8
-vendor/firmware/ipa_fws.b01|d5a75201db8cc9e128067cec664ae74ebab05bdd
+vendor/firmware/ipa_fws.b01|9b2ce2269fb2b8becd1b8bc0e462e7d4a5763985
 vendor/firmware/ipa_fws.b02|f3d7897df5adfbb026a8b88b8364e76a778dc75b
 vendor/firmware/ipa_fws.b03|c07cfef57f8f694b4cee41e78700614efbedf2bc
 vendor/firmware/ipa_fws.b04|e3552692a635dceca369cab6d9349091b669c80a
-vendor/firmware/ipa_fws.elf|fa9f84e68824a4f096063ccbd0443d537a3d5976
-vendor/firmware/ipa_fws.mdt|276fca58e0af57f9a0ef9a17f0337da4adff9a8d
+vendor/firmware/ipa_fws.elf|85327872dcb4364c7f172abddfd5e6b921aff06d
+vendor/firmware/ipa_fws.mdt|c2eb7e920a6f69fc89505f6025981ef5422772d4
 
 # IRQ balance - from Z01R WW_user_100.10.107.123_20210131
 vendor/bin/msm_irqbalance|54c73b55125b13fa40abf3852bfae31bc217eddc
