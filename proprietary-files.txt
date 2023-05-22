@@ -254,45 +254,49 @@ vendor/lib64/vendor.qti.gnss@2.1.so|24d74c737efd0e9fbdd60f08403594540069d98f
 vendor/lib64/vendor.qti.gnss@3.0-service.so|1e50e122fb23cdefba3cbb8475fa462a3525ea99
 vendor/lib64/vendor.qti.gnss@3.0.so|bd175c868a50ce2b4002fa0baa14424b17f8bcf9
 
-# Graphics (Adreno) - from PNX - RKQ1.200906.002
-vendor/lib/egl/eglSubDriverAndroid.so|cc5acc02889131a29b624b4c19ab90b8273f393d
-vendor/lib/egl/libEGL_adreno.so|ae30bbf20dc911308407da99cb263e8de6b2eecb
-vendor/lib/egl/libGLESv1_CM_adreno.so|b94ba8188a14dd262abac1b8d667bce3319cf344
-vendor/lib/egl/libGLESv2_adreno.so|fc0454b2c9d9997f9b7f0b320482fac6db5cab2c
-vendor/lib/egl/libq3dtools_adreno.so|2ac81ee05dd4afb34ef6e56342ee1757f2db1409
-vendor/lib/egl/libq3dtools_esx.so|86bab4e474d680accbc76582c9905fe6824f702d
-vendor/lib/libC2D2.so|267be7bd6768fa3b9bed2b9a42062cb5a77ca59b
-vendor/lib/libCB.so|c4c8fbcb73a48aa1dc14a453b47ed7f1223bb933
-vendor/lib/libOpenCL.so|cbc00e31eedea81f43cc7358181a794503b867b1
-vendor/lib/libVkLayer_q3dtools.so|a52a6eba8415169a5895b4615f879f966f81d5e2
-vendor/lib/libadreno_utils.so|0796bc7ce75dbad3d85e52d3aacd4ba8b59fbaf3
-vendor/lib/libc2d30_bltlib.so|950c705e6dbc02b646a0129e66e94e192f5cd87f
-vendor/lib/libgpudataproducer.so|c8623c9b2e8f330e7f5e77e5d435677719bf5688
-vendor/lib/libgsl.so|777dab024670cceb8c60054cfadcccef33151640
-vendor/lib/libllvm-glnext.so|a20bdbe458c401e9c1726f475f50fb52f9f6fa12
-vendor/lib/libllvm-qcom.so|063963a7d6dfa90c6fa2cbca55943b23a870e02a
-vendor/lib/libpvr.so|9d7e50e1deb16ef03e05141e1babcc49160f840c
-vendor/lib64/egl/eglSubDriverAndroid.so|cd1cb25bfd16f15e0d7c6495493359838a1b6e96
-vendor/lib64/egl/libEGL_adreno.so|96a44c8e3c18c534eb1f333956541955e9f5bd7e
-vendor/lib64/egl/libGLESv1_CM_adreno.so|e2e8a079e680bf92f686fb79146651c158f6e130
-vendor/lib64/egl/libGLESv2_adreno.so|ba9e5618266e50a4d2ef723756e08979e0b4d12b
-vendor/lib64/egl/libq3dtools_adreno.so|046be35d03cbea2c73a1339eefa1bffc87ab6ebc
-vendor/lib64/egl/libq3dtools_esx.so|fe5b3f2dabe3b927544d109ac7d7926d8e3275d6
-vendor/lib64/libC2D2.so|6fb775e393ce7161b30e3a71fa0f320e86374425
-vendor/lib64/libCB.so|bfb47fec90627dd68df536dbb4734453ebae1cf6
-vendor/lib64/libOpenCL.so|4eefe5848a02894166a337abbbc5baddb72c46fb
-vendor/lib64/libVkLayer_q3dtools.so|4fc15fd2c49e32b2151fb00034d389d45cf240c1
-vendor/lib64/libadreno_utils.so|010d7079615cf09413640521ed2db53e91721437
-vendor/lib64/libc2d30_bltlib.so|aa37c84cf6cc1e1ac670b433c97d0bf41308f9ca
-vendor/lib64/libgpudataproducer.so|7d3c8de131f4d64a8ec82840e097f78f8b9ce004
-vendor/lib64/libgsl.so|edcab73069716f117394de07be423331631f9366
-vendor/lib64/libllvm-glnext.so|c11e3f0f5b6d21d1badcca3bc8cac947c781deeb
-vendor/lib64/libllvm-qcom.so|a80c58c8f316af15a7a2d089536f824836f6c056
-vendor/lib64/libpvr.so|ac4805ba7a7c78570a60340d01248d258046e456
+# Graphics (Adreno) - from Z01R WW_user_100.10.107.123_20210131
+vendor/lib64/egl/eglSubDriverAndroid.so|4760f405f4005d61517d604cb5f085e158dc34b2
+vendor/lib64/egl/libEGL_adreno.so|f6421b5c8cfbd496d51feee321d93cfcaa395298
+vendor/lib64/egl/libGLESv1_CM_adreno.so|d8de942d91e7e1a87ee3388911c2e8eaf13c76ef
+vendor/lib64/egl/libGLESv2_adreno.so|e0bc3b02ca47318b3d143cc85a10a0946aeb74a5
+vendor/lib64/egl/libq3dtools_adreno.so|1d02e38fa7ca54d41b35b9f65b7b823ccc749336
+vendor/lib64/egl/libq3dtools_esx.so|e77ffc3f035e9f91890acd222dc96754a771afd0
+vendor/lib64/egl/libQTapGLES.so|e060cdc619053569470859626aa2a41b61da9227
+vendor/lib64/libadreno_utils.so|a06c33ca9f010e3ca3b2af08fc3a854f6402ea89
+vendor/lib64/libbccQTI.so|2105f35a46f936940e124ddba3d4bcf3c7162404
+vendor/lib64/libC2D2.so|63b0a96005bb60bc273fb6d1cdd99bf60dfe1af4
+vendor/lib64/libc2d30_bltlib.so|257612866c2c6fa45847dac0252f2d50c1a74f3b
+vendor/lib64/libCB.so|fd574adcab719ab2f518afac08ac836d05b9aae4
+vendor/lib64/libgsl.so|4ec508ca6eaf0220b5c1edf554890f6f9412a167
+vendor/lib64/libllvm-glnext.so|cf9e410fc758248b4d417c28fb2c490b963ecb6c
+vendor/lib64/libllvm-qcom.so|c07cd2ff5be7e24a154cbf87ba1cbedb21b5657a
+vendor/lib64/libOpenCL.so|b7fc263c86db38668e54570616fcadcfacbbd33d
+vendor/lib64/librs_adreno_sha1.so|89dc227f1cbe297769baa4034c05f4125f8a36d0
+vendor/lib64/librs_adreno.so|9341b9138bfa9b363221da1dadd8ab99beea51e0
+vendor/lib64/libRSDriver_adreno.so|0b06bc637acd5c046ca5ea864316b282dde5a169
+vendor/lib/egl/eglSubDriverAndroid.so|146c5117d6a22bf9aab25589a29d5ea8f3e785f9
+vendor/lib/egl/libEGL_adreno.so|330ab7ae2727fea0cd84407896896d29477f0d61
+vendor/lib/egl/libGLESv1_CM_adreno.so|3cb0773b5d02fcea3e48206515d4cfe1c2ed1a76
+vendor/lib/egl/libGLESv2_adreno.so|a2d3175ee089ed479d98cb0afc97a6d0bb17a43e
+vendor/lib/egl/libq3dtools_adreno.so|95a0f05537f0762e3b8e89d120dfe33661975d12
+vendor/lib/egl/libq3dtools_esx.so|a218f91f364de66954723b0be350c27940f6589a
+vendor/lib/egl/libQTapGLES.so|565a834bc03adae9527a5f4553e38d42e9153e60
+vendor/lib/libadreno_utils.so|ef07dc746ef694dda01344b1decef4f5efc53300
+vendor/lib/libbccQTI.so|967e0756ce0a3a6f1249ceca5ba88bb54cd0e380
+vendor/lib/libC2D2.so|77a2de847d67d61ab6ae8c31349659a8054dccd1
+vendor/lib/libc2d30_bltlib.so|48df7dce187f57a00bdd4c9f3a7cb0f3aa69afcc
+vendor/lib/libCB.so|3b8007a2c1026ac2ab9f775a8649b8deee5db25e
+vendor/lib/libgsl.so|aed6ec16496fcc7f371767600f8bfaf85eba9040
+vendor/lib/libllvm-glnext.so|f3a83df05007e6ffb0dc7af45b6c4c02ff5f38f8
+vendor/lib/libllvm-qcom.so|7c0c0c8f584d7730bceb7799aa26f696dad69875
+vendor/lib/libOpenCL.so|33f4e543e9308b9f031c63ca0e22faea5bd89ecd
+vendor/lib/librs_adreno_sha1.so|f9afa6004ad4e14e351bd50879127874d7c43590
+vendor/lib/librs_adreno.so|c3f303f361ee9e1055ba3a4514e9c1e4e00a1445
+vendor/lib/libRSDriver_adreno.so|b830885d8f5c50e0ad9022fad56289b8cee2c849
 
-# Graphics (Vulkan) - from PNX - RKQ1.200906.002
-vendor/lib/hw/vulkan.adreno.so|b2680e5b899d75fa3f82b457635e15c6998202a4
-vendor/lib64/hw/vulkan.adreno.so|fcc99045aaf7eed0925ac2b64ff2af085212954a
+# Graphics (Vulkan) - from Z01R WW_user_100.10.107.123_20210131
+vendor/lib64/hw/vulkan.sdm845.so|8c7fd105556a0f30af08c969bff2a54b7bf5fb0a
+vendor/lib/hw/vulkan.sdm845.so|8d07a18cbab5769ddd363a9d6747d079652c7044
 
 # IMS app - from polaris V11.0.5.0.QDGMIXM
 -product/priv-app/ims/ims.apk:system_ext/priv-app/ims/ims.apk|4a603c60d02335193864909734d25244ae47209c
