@@ -11,22 +11,18 @@ vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so|f03f42a7200059a1d5b1be0aaafaa82e6
 vendor/lib/com.qualcomm.qti.ant@1.0.so|69cb31da379b8c8226ffbd3555c1888b8e7ae493
 
 # Bluetooth (A2DP) - from Z01R WW_user_100.10.107.123_20210131
-system/lib64/libbtconfigstore.so|99f0cfad22c492a1322fe9511c13c09e21b68838
-system/lib/libbtconfigstore.so|f09b1aebc667043bdec11622f3b5ec2fc6567890
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|2c314e69d8a2297b29fcc7f4482e3146f93cc762
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|e0a3516031887e6afbd502d179e8c30371a331bd
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|d72d584ff5b58b167b91b5c238269536b5c70731
 vendor/lib64/btaudio_offload_if.so|906572e932deaec0e3d8d910601fd08c8e105761
 vendor/lib64/libbluetooth_audio_session_qti.so|179424fcb48e748b67035c14ea6b499512514726
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|639e07face8bdff820a8998d2742f160eca4ac0c
-vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|ee8b281f0962c85ba651bd9779254de20b22a388
 vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|91b0a2b6297bf433d1d722bec555aa816dff0ee6
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|60f21b1b76e125752548ef0d92da06e083063e05
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|d9841596fcd14a3a6b10de27e00f8cb0d11c9e83
 vendor/lib/btaudio_offload_if.so|cb5625745204fdf2549a89770255bd456cd690f3
 vendor/lib/libbluetooth_audio_session_qti.so|263b9f66ce3ec1631d96bcac2eadedab321cf4a8
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so|f71f018666b2716786c1abac0c716619a4860a8e
-vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so|b4e8066c28902aa1d59d23476523deed9a9e4109
 
 # Bluetooth - from polaris V12.0.3.0.QDGMIXM
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|74b5d2e7867e34c0e358cf8d82f3bfea58e97c28
