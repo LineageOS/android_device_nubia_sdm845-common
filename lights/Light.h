@@ -7,6 +7,7 @@
 
 #include <aidl/android/hardware/light/BnLights.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <hardware/hardware.h>
 #include <hardware/lights.h>
 #include <vector>
@@ -15,6 +16,7 @@ using ::aidl::android::hardware::light::HwLightState;
 using ::aidl::android::hardware::light::HwLight;
 using ::aidl::android::hardware::light::LightType;
 using ::aidl::android::hardware::light::BnLights;
+using android::base::GetProperty;
 
 static unsigned int brightness_table[256] = {
     0,    1,    17,   65,   97,   146,  178,  226,  436,  597,  758,  887,

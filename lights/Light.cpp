@@ -197,8 +197,10 @@ static void setBatteryBreathLight() {
             set(NUBIA_FADE, "0 0 0");
             set(NUBIA_GRADE, "100 255");
             set(NUBIA_LED_MODE, BLINK_MODE_CONST);
-            // Set back led strip scrolling (green)
-            set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_CHARGING);
+            if (GetProperty("ro.product.vendor.device", "") == "NX619J") {
+                // Set back led strip scrolling (green)
+                set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_CHARGING);
+            }
 	}else if (battery_state == BATTERY_LOW) {
             LOG(DEBUG) << "BATTERY LOW";
             // Low -- Set top led blink (red)
@@ -206,8 +208,10 @@ static void setBatteryBreathLight() {
             set(NUBIA_FADE, "3 0 4");
             set(NUBIA_GRADE, "0 100");
             set(NUBIA_LED_MODE, BLINK_MODE_ON);
-            // Set back led strip blink(red)
-            set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_LOW);
+            if (GetProperty("ro.product.vendor.device", "") == "NX619J") {
+                // Set back led strip blink(red)
+                set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_LOW);
+            }
 	}else if (battery_state == BATTERY_FULL) {
             LOG(DEBUG) << "BATTERY FULL";
             // Full -- Set top led light up (green)
@@ -215,14 +219,18 @@ static void setBatteryBreathLight() {
             set(NUBIA_FADE, "0 0 0");
             set(NUBIA_GRADE, "100 255");
             set(NUBIA_LED_MODE, BLINK_MODE_CONST);
-            // Set back led strip scrolling (rainbow)
-            set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_FULL);
+            if (GetProperty("ro.product.vendor.device", "") == "NX619J") {
+                // Set back led strip scrolling (rainbow)
+                set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_FULL);
+            }
 	} else if (battery_state == BATTERY_FREE) {
             LOG(DEBUG) << "BATTERY FREE OR DISCHARGING";
             // Disable blinking to start. Turn off all colors of led
             set(NUBIA_LED_MODE, BLINK_MODE_OFF);
-            // turn off back led strip
-            set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
+            if (GetProperty("ro.product.vendor.device", "") == "NX619J") {
+                // turn off back led strip
+                set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
+            }
 	}
     }
 }
@@ -235,8 +243,10 @@ static void setNotificationBreathLight() {
     set(NUBIA_FADE, "3 0 4");
     set(NUBIA_GRADE, "0 100");
     set(NUBIA_LED_MODE, BLINK_MODE_ON);
-    // Set back led strip breath (green)
-    set(BACK_LED_EFFECT_FILE, BREATH_SOURCE_NOTIFICATION);
+    if (GetProperty("ro.product.vendor.device", "") == "NX619J") {
+        // Set back led strip breath (green)
+        set(BACK_LED_EFFECT_FILE, BREATH_SOURCE_NOTIFICATION);
+    }
 }
 
 /*
@@ -263,8 +273,10 @@ static uint32_t setBreathLightLocked(uint32_t event_source, const HwLightState& 
         set(NUBIA_LED_MODE, BLINK_MODE_OFF);
         set(NUBIA_FADE, "0 0 0");
         set(NUBIA_GRADE, "100 255");
-        // turn off back led strip
-        set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
+        if (GetProperty("ro.product.vendor.device", "") == "NX619J") {
+            // turn off back led strip
+            set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
+        }
         return 0;
     }
 
