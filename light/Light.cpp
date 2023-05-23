@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018-2019 The LineageOS Project
+ * Copyright (C) 2018-2023 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,27 +14,42 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "LightsService"
+#define LOG_TAG "LightService"
+
+#include <log/log.h>
 
 #include "Light.h"
 
-#include <android-base/logging.h>
-#include <android-base/stringprintf.h>
 #include <fstream>
 
-namespace android {
-namespace hardware {
-namespace light {
-namespace V2_0 {
-namespace implementation {
+#define LCD_LED           "/sys/class/leds/lcd-backlight/brightness"
 
-#define MODE_OFF           2
-#define MODE_CONSTANT_ON   1
-#define MODE_AUTO_BLINK    3
+#define NUBIA_LED_MODE    "/sys/class/leds/nubia_led/blink_mode"
+#define NUBIA_LED_COLOR   "/sys/class/leds/nubia_led/outn"
+#define NUBIA_GRADE       "/sys/class/leds/nubia_led/grade_parameter"
+#define NUBIA_FADE        "/sys/class/leds/nubia_led/fade_parameter"
 
-#define LED_CHANNEL_RED      48
-#define LED_CHANNEL_GREEN    64
-#define LED_CHANNEL_BLUE     80
+#define BATTERY_STATUS_FILE       "/sys/class/power_supply/battery/status"
+#define BATTERY_CAPACITY          "/sys/class/power_supply/battery/capacity"
+
+#define BATTERY_STATUS_CHARGING     "Charging"
+
+#define BLINK_MODE_ON    3
+#define BLINK_MODE_CONST 1
+#define BLINK_MODE_OFF   0
+
+#define NUBIA_LED_DISABLE 16
+#define NUBIA_LED_RED     48
+#define NUBIA_LED_GREEN   64
+
+#define BREATH_SOURCE_NONE		0x00
+#define BREATH_SOURCE_NOTIFICATION	0x01
+#define BREATH_SOURCE_BATTERY		0x02
+#define BREATH_SOURCE_BUTTONS		0x04
+#define BREATH_SOURCE_ATTENTION		0x08
+
+#define MAX_LED_BRIGHTNESS    255
+#define MAX_LCD_BRIGHTNESS    4095
 
 #define BACK_LED_EFFECT_FILE       "/sys/class/leds/aw22xxx_led/effect"
 
@@ -44,168 +59,251 @@ namespace implementation {
 #define BACK_LED_BATTERY_FULL      11
 #define BACK_LED_BATTERY_LOW       33
 
+enum battery_status {
+    BATTERY_UNKNOWN = 0,
+    BATTERY_LOW,
+    BATTERY_FREE,
+    BATTERY_CHARGING,
+    BATTERY_FULL,
+};
+
+namespace {
 /*
  * Write value to path and close file.
  */
-template <typename T>
-static void set(const std::string& path, const T& value) {
+static void set(std::string path, std::string value) {
     std::ofstream file(path);
+
+    if (!file.is_open()) {
+        ALOGW("failed to write %s to %s", value.c_str(), path.c_str());
+        return;
+    }
+
     file << value;
 }
 
-/*
- * Read from path and close file.
- * Return def in case of any failure.
- */
-template <typename T>
-static T get(const std::string& path, const T& def) {
+static int get(std::string path) {
     std::ifstream file(path);
-    T result;
+    int value;
 
-    file >> result;
-    return file.fail() ? def : result;
+    if (!file.is_open()) {
+        ALOGW("failed to read from %s", path.c_str());
+        return 0;
+    }
+
+    file >> value;
+    return value;
 }
 
-static constexpr int kDefaultMaxBrightness = 255;
+static int readStr(std::string path, char *buffer, size_t size)
+{
+
+    std::ifstream file(path);
+
+    if (!file.is_open()) {
+        ALOGW("failed to read %s", path.c_str());
+        return -1;
+    }
+
+    file.read(buffer, size);
+    file.close();
+    return 1;
+}
+
+static void set(std::string path, int value) {
+    set(path, std::to_string(value));
+}
 
 static uint32_t getBrightness(const LightState& state) {
     uint32_t alpha, red, green, blue;
 
-    // Extract brightness from AARRGGBB
-    alpha = (state.color >> 24) & 0xff;
+    /*
+     * Extract brightness from AARRGGBB.
+     */
+    alpha = (state.color >> 24) & 0xFF;
+    red = (state.color >> 16) & 0xFF;
+    green = (state.color >> 8) & 0xFF;
+    blue = state.color & 0xFF;
 
-    // Retrieve each of the RGB colors
-    red = (state.color >> 16) & 0xff;
-    green = (state.color >> 8) & 0xff;
-    blue = state.color & 0xff;
-
-    // Scale RGB colors if a brightness has been applied by the user
-    if (alpha != 0xff) {
-        red = red * alpha / 0xff;
-        green = green * alpha / 0xff;
-        blue = blue * alpha / 0xff;
+    /*
+     * Scale RGB brightness if Alpha brightness is not 0xFF.
+     */
+    if (alpha != 0xFF) {
+        red = red * alpha / 0xFF;
+        green = green * alpha / 0xFF;
+        blue = blue * alpha / 0xFF;
     }
 
     return (77 * red + 150 * green + 29 * blue) >> 8;
 }
 
-static uint32_t rgbToBrightness(const LightState& state) {
-    uint32_t color = state.color & 0x00ffffff;
-    return ((77 * ((color >> 16) & 0xff))
-            + (150 * ((color >> 8) & 0xff))
-            + (29 * (color & 0xff))) >> 8;
-}
+int getBatteryStatus()
+{
+    int err;
 
-Light::Light() {
-    mLights.emplace(Type::ATTENTION, std::bind(&Light::handleNotification, this, std::placeholders::_1, 0));
-    mLights.emplace(Type::BACKLIGHT, std::bind(&Light::handleBacklight, this, std::placeholders::_1));
-    mLights.emplace(Type::BATTERY, std::bind(&Light::handleNotification, this, std::placeholders::_1, 1));
-    mLights.emplace(Type::NOTIFICATIONS, std::bind(&Light::handleNotification, this, std::placeholders::_1, 2));
-}
+    char status_str[16];
+    int capacity = 0;
 
-void Light::handleBacklight(const LightState& state) {
-    int maxBrightness = get("/sys/class/backlight/panel0-backlight/max_brightness", -1);
-    if (maxBrightness < 0) {
-        maxBrightness = kDefaultMaxBrightness;
+    err = readStr(BATTERY_STATUS_FILE, status_str, sizeof(status_str));
+    if (err <= 0) {
+        ALOGI("failed to read battery status: %d", err);
+        return BATTERY_UNKNOWN;
     }
-    uint32_t sentBrightness = rgbToBrightness(state);
-    uint32_t brightness = sentBrightness * maxBrightness / kDefaultMaxBrightness;
-    LOG(DEBUG) << "Writing backlight brightness " << brightness
-               << " (orig " << sentBrightness << ")";
-    set("/sys/class/backlight/panel0-backlight/brightness", brightness);
-}
 
-void Light::handleNotification(const LightState& state, size_t index) {
-    mLightStates.at(index) = state;
+    //ALOGI("battery status: %d, %s", err, status_str);
 
-    LightState stateToUse = mLightStates.front();
-    for (const auto& lightState : mLightStates) {
-        if (lightState.color & 0xffffff) {
-            stateToUse = lightState;
-            break;
+    capacity = get(BATTERY_CAPACITY);
+
+    //ALOGI("battery capacity: %d", capacity);
+
+    if (0 == strncmp(status_str, BATTERY_STATUS_CHARGING, 8)) {
+        if (capacity < 90) {
+            return BATTERY_CHARGING;
+        } else {
+            return BATTERY_FULL;
+        }
+    } else {
+        if (capacity < 10) {
+            return BATTERY_LOW;
+        } else {
+            return BATTERY_FREE;
         }
     }
+}
 
-    uint32_t brightness = getBrightness(stateToUse);
+static inline uint32_t scaleBrightness(uint32_t brightness, uint32_t maxBrightness) {
+    return brightness * maxBrightness / 0xFF;
+}
 
-    uint32_t onMs = stateToUse.flashMode == Flash::TIMED ? stateToUse.flashOnMs : 0;
-    uint32_t offMs = stateToUse.flashMode == Flash::TIMED ? stateToUse.flashOffMs : 0;
+static inline uint32_t getScaledBrightness(const LightState& state, uint32_t maxBrightness) {
+    return scaleBrightness(getBrightness(state), maxBrightness);
+}
 
+static void handleBacklight(const LightState& state) {
+    uint32_t brightness = getScaledBrightness(state, MAX_LCD_BRIGHTNESS);
+    set(LCD_LED, brightness);
+}
+
+static void handleNotification(const LightState& state) {
+
+    uint32_t brightness = getScaledBrightness(state, MAX_LED_BRIGHTNESS);
+
+    int32_t onMs = state.flashOnMs;
+    int32_t offMs = state.flashOffMs;
 
     // Disable blinking to start. Turn off all colors of led
-    set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
-    set("/sys/class/leds/nubia_led/blink_mode", MODE_OFF);
-    set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
-    set("/sys/class/leds/nubia_led/blink_mode", MODE_OFF);
-    set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_BLUE);
-    set("/sys/class/leds/nubia_led/blink_mode", MODE_OFF);
+    // disable green led
+    set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+    set(NUBIA_LED_MODE, BLINK_MODE_OFF);
+    // disable red led
+    set(NUBIA_LED_COLOR, NUBIA_LED_RED);
+    set(NUBIA_LED_MODE, BLINK_MODE_OFF);
+    // set disable led
+    set(NUBIA_LED_COLOR, NUBIA_LED_DISABLE);
+    set(NUBIA_LED_MODE, BLINK_MODE_OFF);
+    set(NUBIA_FADE, "0 0 0");
+    set(NUBIA_GRADE, "100 255");
     // turn off back led strip
     set(BACK_LED_EFFECT_FILE, BACK_LED_OFF);
-    LOG(DEBUG) << "Disable blink ";
+
     if (brightness <= 0)
     {
         return;
     }
 
     if (onMs > 0 && offMs > 0) {
-        // Turn Of Red Led
-        set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
-        set("/sys/class/leds/nubia_led/blink_mode", MODE_AUTO_BLINK);
-
-        // Turn Of Green Led, it is yellow now
-        set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
-        set("/sys/class/leds/nubia_led/blink_mode", MODE_AUTO_BLINK);
-
-        set("/sys/class/leds/nubia_led/fade_parameter", "3 0 4");
-        set("/sys/class/leds/nubia_led/grade_parameter", "10 100");
-        // Start blinking
-        set("/sys/class/leds/nubia_led/blink_mode", MODE_AUTO_BLINK);
+	// Notification -- Set top led blink (green)
+        set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+        set(NUBIA_FADE, "3 0 4");
+        set(NUBIA_GRADE, "0 100");
+        set(NUBIA_LED_MODE, BLINK_MODE_ON);
 	// Set back led strip breath (green)
         set(BACK_LED_EFFECT_FILE, BACK_LED_NOTIFICATION);
     } else {
-        uint32_t capacity = get("/sys/class/power_supply/battery/capacity", 0);
-        std::string defualt = "Discharging";
-        std::string status = get("/sys/class/power_supply/battery/status", defualt);
-        if (capacity >= 90 || status == "FULL")
-        {
-            set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
-            // Set back led strip scrolling (rainbow)
-            set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_FULL);
-        }else if (10 <= capacity < 90 || status == "CHARGING")
-        {
-            set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
-            set("/sys/class/leds/nubia_led/blink_mode", MODE_CONSTANT_ON);
-            set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_GREEN);
+        // Get battery status
+        int battery_state = getBatteryStatus();
+
+	if(battery_state == BATTERY_CHARGING) {
+            // Charging -- Set top led light up (red)
+            set(NUBIA_LED_COLOR, NUBIA_LED_RED);
+            set(NUBIA_FADE, "0 0 0");
+            set(NUBIA_GRADE, "100 255");
+            set(NUBIA_LED_MODE, BLINK_MODE_CONST);
             // Set back led strip scrolling (green)
             set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_CHARGING);
-        }else if (0 < capacity <= 10 || status == "LOW") {
-            set("/sys/class/leds/nubia_led/outn", LED_CHANNEL_RED);
+	}else if (battery_state == BATTERY_LOW) {
+            // Low -- Set top led blink (red)
+            set(NUBIA_LED_COLOR, NUBIA_LED_RED);
+            set(NUBIA_FADE, "3 0 4");
+            set(NUBIA_GRADE, "0 100");
+            set(NUBIA_LED_MODE, BLINK_MODE_ON);
             // Set back led strip blink(red)
             set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_LOW);
-        }
-        set("/sys/class/leds/nubia_led/fade_parameter", "0 1 1");
-        set("/sys/class/leds/nubia_led/grade_parameter", "20 200");
-        set("/sys/class/leds/nubia_led/blink_mode", MODE_CONSTANT_ON);
-        LOG(DEBUG) << "battery_status " << status
-               << " (capacity " << capacity << ")";
+	}else if (battery_state == BATTERY_FULL) {
+            // Full -- Set top led light up (green)
+            set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+            set(NUBIA_FADE, "0 0 0");
+            set(NUBIA_GRADE, "100 255");
+            set(NUBIA_LED_MODE, BLINK_MODE_CONST);
+            // Set back led strip scrolling (rainbow)
+            set(BACK_LED_EFFECT_FILE, BACK_LED_BATTERY_FULL);
+	}
     }
-    LOG(DEBUG) << base::StringPrintf(
-        "handleRgb: mode=%d, color=%08X, onMs=%d, offMs=%d",
-        static_cast<std::underlying_type<Flash>::type>(stateToUse.flashMode), stateToUse.color,
-        onMs, offMs);
 }
 
-Return<Status> Light::setLight(Type type, const LightState& state) {
-    auto it = mLights.find(type);
+static inline bool isLit(const LightState& state) {
+    return state.color & 0x00ffffff;
+}
 
-    if (it == mLights.end()) {
+/* Keep sorted in the order of importance. */
+static std::vector<LightBackend> backends = {
+    { Type::ATTENTION, handleNotification },
+    { Type::NOTIFICATIONS, handleNotification },
+    { Type::BATTERY, handleNotification },
+    { Type::BACKLIGHT, handleBacklight },
+};
+
+}  // anonymous namespace
+
+namespace android {
+namespace hardware {
+namespace light {
+namespace V2_0 {
+namespace implementation {
+
+Return<Status> Light::setLight(Type type, const LightState& state) {
+    LightStateHandler handler;
+    bool handled = false;
+
+    /* Lock global mutex until light state is updated. */
+    std::lock_guard<std::mutex> lock(globalLock);
+
+    /* Update the cached state value for the current type. */
+    for (LightBackend& backend : backends) {
+        if (backend.type == type) {
+            backend.state = state;
+            handler = backend.handler;
+        }
+    }
+
+    /* If no handler has been found, then the type is not supported. */
+    if (!handler) {
         return Status::LIGHT_NOT_SUPPORTED;
     }
 
-    // Lock global mutex until light state is updated.
-    std::lock_guard<std::mutex> lock(mLock);
+    /* Light up the type with the highest priority that matches the current handler. */
+    for (LightBackend& backend : backends) {
+        if (handler == backend.handler && isLit(backend.state)) {
+            handler(backend.state);
+            handled = true;
+            break;
+        }
+    }
 
-    it->second(state);
+    /* If no type has been lit up, then turn off the hardware. */
+    if (!handled) {
+        handler(state);
+    }
 
     return Status::SUCCESS;
 }
@@ -213,8 +311,8 @@ Return<Status> Light::setLight(Type type, const LightState& state) {
 Return<void> Light::getSupportedTypes(getSupportedTypes_cb _hidl_cb) {
     std::vector<Type> types;
 
-    for (auto const& light : mLights) {
-        types.push_back(light.first);
+    for (const LightBackend& backend : backends) {
+        types.push_back(backend.type);
     }
 
     _hidl_cb(types);
