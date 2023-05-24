@@ -7,7 +7,7 @@
 
 #include <fstream>
 
-#define LCD_LED           "/sys/class/leds/lcd-backlight/brightness"
+#define LCD_LED           "/sys/class/backlight/panel0-backlight/brightness"
 
 #define NUBIA_LED_MODE    "/sys/class/leds/nubia_led/blink_mode"
 #define NUBIA_LED_COLOR   "/sys/class/leds/nubia_led/outn"
