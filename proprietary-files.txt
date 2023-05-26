@@ -11,16 +11,12 @@ vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
 vendor/lib/com.qualcomm.qti.ant@1.0.so
 
 # Bluetooth
-system/lib64/libbtconfigstore.so
-system/lib/libbtconfigstore.so
-vendor/lib64/hw/audio.bluetooth_qti.default.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
 vendor/lib64/btaudio_offload_if.so
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
-vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
 vendor/lib/hw/audio.bluetooth_qti.default.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
@@ -29,6 +25,14 @@ vendor/lib/btaudio_offload_if.so
 vendor/lib/libbluetooth_audio_session_qti.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so
+
+# Bluetooth - from polaris V12.0.3.0.QDGMIXM
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|74b5d2e7867e34c0e358cf8d82f3bfea58e97c28
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|a979981c55f3dcaf6cf2212e71b901ca4d58b959
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|8e4d152aacd51ced20db62faf99c67fe7478128e
+vendor/lib64/libbtnv.so|395aad107d06bbff6dd2277c627a961a58ea728e
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|9eeea93297e772684ff04423d76cb7370ced30b0
+vendor/lib/libbtnv.so|c20530560bc7d3b64215ef4f588c5924230efaac
 
 # Bluetooth (aptX) - from crosshatch - QP1A.190711.020
 product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
