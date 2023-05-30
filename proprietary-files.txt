@@ -325,8 +325,10 @@ vendor/lib/libRSDriver_adreno.so|b830885d8f5c50e0ad9022fad56289b8cee2c849
 vendor/lib64/hw/vulkan.sdm845.so|8c7fd105556a0f30af08c969bff2a54b7bf5fb0a
 vendor/lib/hw/vulkan.sdm845.so|8d07a18cbab5769ddd363a9d6747d079652c7044
 
+# IMS - from beryllium - MIUI package V12.0.3.0.QEJMIXM
+system_ext/app/uceShimService/uceShimService.apk|27abaa1a7c795c4a70202e7e8c8bd7a3f6e113d5
+
 # IMS - from PNX - PNX_00WW_FIH-user-11-RKQ1.200906.002-00WW_6_21F-release-keys
-system_ext/app/uceShimService/uceShimService.apk|644eec82ed9ecf1c1324241271ac5c9b5fe68f8b
 system_ext/lib64/com.qualcomm.qti.imscmservice@1.0.so|41a6b6ad78341405de60c1fd3c8f202fb3908329
 system_ext/lib64/com.qualcomm.qti.imscmservice@2.0.so|7ec78e4d8fd428ac7fab2b12f34dd0d65b5e53db
 system_ext/lib64/com.qualcomm.qti.imscmservice@2.1.so|9e29f18494de25de70a751a40ba20787e92470dd
