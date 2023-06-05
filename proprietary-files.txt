@@ -281,49 +281,49 @@ vendor/lib64/vendor.qti.gnss@3.0.so|b67a1ff507cfb4165a9dc970dc54aa26cc731e6f
 vendor/lib64/vendor.qti.gnss@4.0-service.so|3c75d133af5193436167380aa89abcf05d079968
 vendor/lib64/vendor.qti.gnss@4.0.so|7d343c73e6720434045cc38ea0e570ae9d03cd51
 
-# Graphics (Adreno) - from Z01R WW_user_100.10.107.123_20210131
-vendor/lib64/egl/eglSubDriverAndroid.so|4760f405f4005d61517d604cb5f085e158dc34b2
-vendor/lib64/egl/libEGL_adreno.so|f6421b5c8cfbd496d51feee321d93cfcaa395298
-vendor/lib64/egl/libGLESv1_CM_adreno.so|d8de942d91e7e1a87ee3388911c2e8eaf13c76ef
-vendor/lib64/egl/libGLESv2_adreno.so|e0bc3b02ca47318b3d143cc85a10a0946aeb74a5
-vendor/lib64/egl/libq3dtools_adreno.so|1d02e38fa7ca54d41b35b9f65b7b823ccc749336
-vendor/lib64/egl/libq3dtools_esx.so|e77ffc3f035e9f91890acd222dc96754a771afd0
-vendor/lib64/egl/libQTapGLES.so|e060cdc619053569470859626aa2a41b61da9227
-vendor/lib64/libadreno_utils.so|a06c33ca9f010e3ca3b2af08fc3a854f6402ea89
-vendor/lib64/libbccQTI.so|2105f35a46f936940e124ddba3d4bcf3c7162404
-vendor/lib64/libC2D2.so|63b0a96005bb60bc273fb6d1cdd99bf60dfe1af4
-vendor/lib64/libc2d30_bltlib.so|257612866c2c6fa45847dac0252f2d50c1a74f3b
-vendor/lib64/libCB.so|fd574adcab719ab2f518afac08ac836d05b9aae4
-vendor/lib64/libgsl.so|4ec508ca6eaf0220b5c1edf554890f6f9412a167
-vendor/lib64/libllvm-glnext.so|cf9e410fc758248b4d417c28fb2c490b963ecb6c
-vendor/lib64/libllvm-qcom.so|c07cd2ff5be7e24a154cbf87ba1cbedb21b5657a
-vendor/lib64/libOpenCL.so|b7fc263c86db38668e54570616fcadcfacbbd33d
-vendor/lib64/librs_adreno_sha1.so|89dc227f1cbe297769baa4034c05f4125f8a36d0
-vendor/lib64/librs_adreno.so|9341b9138bfa9b363221da1dadd8ab99beea51e0
-vendor/lib64/libRSDriver_adreno.so|0b06bc637acd5c046ca5ea864316b282dde5a169
-vendor/lib/egl/eglSubDriverAndroid.so|146c5117d6a22bf9aab25589a29d5ea8f3e785f9
-vendor/lib/egl/libEGL_adreno.so|330ab7ae2727fea0cd84407896896d29477f0d61
-vendor/lib/egl/libGLESv1_CM_adreno.so|3cb0773b5d02fcea3e48206515d4cfe1c2ed1a76
-vendor/lib/egl/libGLESv2_adreno.so|a2d3175ee089ed479d98cb0afc97a6d0bb17a43e
-vendor/lib/egl/libq3dtools_adreno.so|95a0f05537f0762e3b8e89d120dfe33661975d12
-vendor/lib/egl/libq3dtools_esx.so|a218f91f364de66954723b0be350c27940f6589a
-vendor/lib/egl/libQTapGLES.so|565a834bc03adae9527a5f4553e38d42e9153e60
-vendor/lib/libadreno_utils.so|ef07dc746ef694dda01344b1decef4f5efc53300
-vendor/lib/libbccQTI.so|967e0756ce0a3a6f1249ceca5ba88bb54cd0e380
-vendor/lib/libC2D2.so|77a2de847d67d61ab6ae8c31349659a8054dccd1
-vendor/lib/libc2d30_bltlib.so|48df7dce187f57a00bdd4c9f3a7cb0f3aa69afcc
-vendor/lib/libCB.so|3b8007a2c1026ac2ab9f775a8649b8deee5db25e
-vendor/lib/libgsl.so|aed6ec16496fcc7f371767600f8bfaf85eba9040
-vendor/lib/libllvm-glnext.so|f3a83df05007e6ffb0dc7af45b6c4c02ff5f38f8
-vendor/lib/libllvm-qcom.so|7c0c0c8f584d7730bceb7799aa26f696dad69875
-vendor/lib/libOpenCL.so|33f4e543e9308b9f031c63ca0e22faea5bd89ecd
-vendor/lib/librs_adreno_sha1.so|f9afa6004ad4e14e351bd50879127874d7c43590
-vendor/lib/librs_adreno.so|c3f303f361ee9e1055ba3a4514e9c1e4e00a1445
-vendor/lib/libRSDriver_adreno.so|b830885d8f5c50e0ad9022fad56289b8cee2c849
+# Graphics (Adreno) - from NX619J PKQ1.180929.001
+vendor/lib64/egl/eglSubDriverAndroid.so|47cdec74e3849e494d3f0bcafe5dd6e5769eadb6
+vendor/lib64/egl/libEGL_adreno.so|f15fa199dc6b59de2110aa02398cb8e9b72c00c6
+vendor/lib64/egl/libGLESv1_CM_adreno.so|3f5f359a6e13e508cd4fc5784f0c5a8f0ead408a
+vendor/lib64/egl/libGLESv2_adreno.so|35cd9532c567f3de7c30f80fdfe614e3e0c96851
+vendor/lib64/egl/libq3dtools_adreno.so|4bd18c19a4d8376311983303b0971a7aa1334897
+vendor/lib64/egl/libq3dtools_esx.so|22847f2f302b07fc53f5f122b10807af8708c7f8
+vendor/lib64/egl/libQTapGLES.so|8d41d6ad03774c59b1b477997a24ed9afaafc3cc
+vendor/lib64/libadreno_utils.so|c2a2afcee56cad745ad5444c3385fb74c0fb9ff2
+vendor/lib64/libbccQTI.so|1cd88110528e34674dfcc19b45e2cbfd3175ab8f
+vendor/lib64/libC2D2.so|724684ac0e167bc729cbdea1ee9e21da248cfd58
+vendor/lib64/libc2d30_bltlib.so|e950f918802d3d3e656ab4f0fe731bb60e1b357e
+vendor/lib64/libCB.so|41fd3d77f89c4fb78ae335e2398354a644e0a185
+vendor/lib64/libgsl.so|21cde1b1f3c4e4da5ecbf798f3a3447030f5614c
+vendor/lib64/libllvm-glnext.so|c8e6bc572e8a46d17128b7da8b7f932a3cae00f9
+vendor/lib64/libllvm-qcom.so|b793dcb2bf353aa0890fcdd5c7523b78bb867ccb
+vendor/lib64/libOpenCL.so|1e78c9b98378803703835a3e1cbfabf43318f341
+vendor/lib64/librs_adreno_sha1.so|42ba41a7da568a9b0edc508a9b0b73ab2273b904
+vendor/lib64/librs_adreno.so|58e697ffe5c4b76942118d4b3ca43464db7a4924
+vendor/lib64/libRSDriver_adreno.so|4527c159a0bce19d8762ac044813b4a42272af0c
+vendor/lib/egl/eglSubDriverAndroid.so|6ce9cba93751e566a6547b0a10a7458fe74eaba9
+vendor/lib/egl/libEGL_adreno.so|403366b1d187f3625f3bdcd8dd7902eeb1cef73c
+vendor/lib/egl/libGLESv1_CM_adreno.so|36a4efb4cf8f3431d955c0f8eca3e79e97d3c216
+vendor/lib/egl/libGLESv2_adreno.so|778e7c73d3d5682cc70e051475cc4207ee24f683
+vendor/lib/egl/libq3dtools_adreno.so|c3c07de0fdb1ff8bd3d6e4c8ca266d6d8c8384ae
+vendor/lib/egl/libq3dtools_esx.so|f4226a6d888303e7fcd66953582ad00dd33aaeaa
+vendor/lib/egl/libQTapGLES.so|6917a626e3c0b4a9f57d4b1e6c321ad4a43d99cb
+vendor/lib/libadreno_utils.so|5499a083a65d99f89831c2cfe3f32ef61ea62d79
+vendor/lib/libbccQTI.so|4d1d35eaefa02e59f67cfed9a3db9a815589ab97
+vendor/lib/libC2D2.so|78b95ed4241bb89533314cb96ba0f4ad564db9d3
+vendor/lib/libc2d30_bltlib.so|7aaba01716ec44c9eaedfcd6a1e23bfc499c2173
+vendor/lib/libCB.so|00eef41700afe536a149dd67515394d3f5a857c2
+vendor/lib/libgsl.so|eee58ba1ff73f46eb436d04c26187bd18ecd4d7f
+vendor/lib/libllvm-glnext.so|e075a3b4cbd52a115b46c647c48d4aea00b72dc2
+vendor/lib/libllvm-qcom.so|087e21796ce2b455662335878de5db692a9b09b2
+vendor/lib/libOpenCL.so|4cd42df87d35c69f4f4173abcde96804cce7845b
+vendor/lib/librs_adreno_sha1.so|cefa70722966777a06230d663492a4429f8dddca
+vendor/lib/librs_adreno.so|269031b657a4d38282203144bfbf37aa061cf2c6
+vendor/lib/libRSDriver_adreno.so|102ce7596d26f151edb972c192a2b1dc6fe6f8e2
 
-# Graphics (Vulkan) - from Z01R WW_user_100.10.107.123_20210131
-vendor/lib64/hw/vulkan.sdm845.so|8c7fd105556a0f30af08c969bff2a54b7bf5fb0a
-vendor/lib/hw/vulkan.sdm845.so|8d07a18cbab5769ddd363a9d6747d079652c7044
+# Graphics (Vulkan) - from NX619J PKQ1.180929.001
+vendor/lib64/hw/vulkan.sdm845.so|23348cf4196c8deb16becdd696d445d9c70cc1a8
+vendor/lib/hw/vulkan.sdm845.so|ad955887a2261097b2702a16fd57d181b0489628
 
 # IMS - from beryllium - MIUI package V12.0.3.0.QEJMIXM
 system_ext/app/uceShimService/uceShimService.apk|27abaa1a7c795c4a70202e7e8c8bd7a3f6e113d5
