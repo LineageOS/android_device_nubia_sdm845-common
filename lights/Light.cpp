@@ -214,8 +214,13 @@ static void setBatteryBreathLight() {
             }
 	}else if (battery_state == BATTERY_FULL) {
             LOG(DEBUG) << "BATTERY FULL";
-            // Full -- Set top led light up (green)
-            set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+            if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
+                // Full -- Turn off
+                set(NUBIA_LED_COLOR, NUBIA_LED_DISABLE);
+            } else {
+                // Full -- Set top led light up (green)
+                set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+            }
             set(NUBIA_FADE, "0 0 0");
             set(NUBIA_GRADE, "100 255");
             set(NUBIA_LED_MODE, BLINK_MODE_CONST);
