@@ -63,6 +63,9 @@
 /bt_firmware(/.*)?                            u:object_r:vendor_firmware_file:s0
 /persist(/.*)?                                u:object_r:mnt_vendor_file:s0
 
+# Sensors
+/(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@1\.0-service\.nubia_sdm845                    u:object_r:hal_sensors_default_exec:s0
+
 # Sockets
 /dev/socket/audio_hw_socket                   u:object_r:audio_socket:s0
 /dev/socket/gps                               u:object_r:gps_socket:s0
