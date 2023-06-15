@@ -611,15 +611,6 @@ service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0
     group system
     disabled
 
-# Override the AOSP sensor HAL service definition to add input group access
-service vendor.sensors-hal-1-0 /vendor/bin/hw/android.hardware.sensors@1.0-service
-    override
-    class hal
-    user system
-    group system wakelock input uhid
-    capabilities BLOCK_SUSPEND
-    rlimit rtprio 10 10
-
 on property:vold.decrypt=trigger_restart_framework
     restart vendor.audio-hal
     start vendor-sensor-sh
