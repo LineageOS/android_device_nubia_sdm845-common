@@ -1,4 +1,3 @@
 allow ueventd debugfs:dir { getattr open read relabelfrom };
 allow ueventd { debugfs debugfs_wakeup_sources }:file getattr;
-allow ueventd qti_debugfs:dir relabelto;
 allow ueventd { debugfs debugfs_sched_features }:file getattr;

@@ -1,6 +1,3 @@
-# Audio devices
-/dev/elliptic(.*)?                            u:object_r:sound_device:s0
-
 # Camera
 /(vendor|system/vendor)/bin/remosaic_daemon   u:object_r:remosaic_daemon_exec:s0
 /dev/nubia_eeprom                             u:object_r:camera_eeprom_device:s0
