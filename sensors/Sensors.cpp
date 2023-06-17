@@ -19,7 +19,7 @@
 #include "multihal.h"
 
 #include <android-base/logging.h>
-
+#include <android-base/properties.h>
 #include <sys/stat.h>
 
 namespace android {
@@ -27,6 +27,8 @@ namespace hardware {
 namespace sensors {
 namespace V1_0 {
 namespace implementation {
+
+using android::base::GetProperty;
 
 /*
  * If a multi-hal configuration file exists in the proper location,
@@ -150,6 +152,24 @@ Return<Result> Sensors::setOperationMode(OperationMode mode) {
 
 Return<Result> Sensors::activate(
         int32_t sensor_handle, bool enabled) {
+    if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
+        LOG(ERROR) << "SensorHandle=" << sensor_handle << ", enable=" << enabled;
+        if (sensor_handle == 36) { //prox
+            if (!audioDevice) {
+                ::android::hardware::audio::V6_0::IDevicesFactory::getService()->openDevice(
+            "primary", [&](::android::hardware::audio::V6_0::Result, const sp<::android::hardware::audio::V6_0::IDevice>& result) {
+                        audioDevice = result;
+                    });
+            }
+            if (audioDevice != nullptr) {
+                LOG(ERROR) << "SensorHandle: " << "get primary deivce";
+                std::string value = enabled ? "1" : "0";
+                audioDevice->setParameters({}, {{"ultrasound-usecase", value}});
+            } else {
+                LOG(ERROR) << "SensorHandle: " << "failed get primary deivce";
+            }
+        }
+    }
     return ResultFromStatus(
             mSensorDevice->activate(
                 reinterpret_cast<sensors_poll_device_t *>(mSensorDevice),

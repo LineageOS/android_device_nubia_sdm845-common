@@ -18,6 +18,7 @@
 
 #define HARDWARE_INTERFACES_SENSORS_V1_0_DEFAULT_SENSORS_H_
 
+#include <android/hardware/audio/6.0/IDevicesFactory.h>
 #include <android-base/macros.h>
 #include <android/hardware/sensors/1.0/ISensors.h>
 #include <hardware/sensors.h>
@@ -68,6 +69,7 @@ private:
     sensors_module_t *mSensorModule;
     sensors_poll_device_1_t *mSensorDevice;
     std::mutex mPollLock;
+    sp<::android::hardware::audio::V6_0::IDevice> audioDevice;
 
     int getHalDeviceVersion() const;
 
