@@ -1,5 +1,5 @@
 filegroup {
-    name: "android.hardware.audio-impl_srcs",
+    name: "android.hardware.audio-impl_srcs.nubia_sdm845",
     srcs: [
         "Device.cpp",
         "DevicesFactory.cpp",
@@ -12,18 +12,18 @@ filegroup {
 }
 
 cc_library_headers {
-    name: "android.hardware.audio-impl_headers",
+    name: "android.hardware.audio-impl_headers.nubia_sdm845",
     proprietary: true,
     vendor: true,
     export_include_dirs: ["include"],
 }
 
 cc_defaults {
-    name: "android.hardware.audio-impl_default",
+    name: "android.hardware.audio-impl_default.nubia_sdm845",
     relative_install_path: "hw",
     proprietary: true,
     vendor: true,
-    srcs: [":android.hardware.audio-impl_srcs"],
+    srcs: [":android.hardware.audio-impl_srcs.nubia_sdm845"],
 
     defaults: ["hidl_defaults"],
 
@@ -44,7 +44,7 @@ cc_defaults {
     ],
 
     header_libs: [
-        "android.hardware.audio-impl_headers",
+        "android.hardware.audio-impl_headers.nubia_sdm845",
         "android.hardware.audio.common.util@all-versions",
         "libaudioclient_headers",
         "libaudioutils_headers",
@@ -55,13 +55,13 @@ cc_defaults {
     ],
 
     export_header_lib_headers: [
-        "android.hardware.audio-impl_headers",
+        "android.hardware.audio-impl_headers.nubia_sdm845",
     ],
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@2.0-impl",
-    defaults: ["android.hardware.audio-impl_default"],
+    name: "android.hardware.audio@2.0-impl.nubia_sdm845",
+    defaults: ["android.hardware.audio-impl_default.nubia_sdm845"],
     shared_libs: [
         "android.hardware.audio@2.0",
         "android.hardware.audio@2.0-util",
@@ -76,8 +76,8 @@ cc_library_shared {
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@4.0-impl",
-    defaults: ["android.hardware.audio-impl_default"],
+    name: "android.hardware.audio@4.0-impl.nubia_sdm845",
+    defaults: ["android.hardware.audio-impl_default.nubia_sdm845"],
 
     shared_libs: [
         "android.hardware.audio@4.0",
@@ -93,8 +93,8 @@ cc_library_shared {
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@5.0-impl",
-    defaults: ["android.hardware.audio-impl_default"],
+    name: "android.hardware.audio@5.0-impl.nubia_sdm845",
+    defaults: ["android.hardware.audio-impl_default.nubia_sdm845"],
     shared_libs: [
         "android.hardware.audio@5.0",
         "android.hardware.audio@5.0-util",
@@ -109,8 +109,8 @@ cc_library_shared {
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@6.0-impl",
-    defaults: ["android.hardware.audio-impl_default"],
+    name: "android.hardware.audio@6.0-impl.nubia_sdm845",
+    defaults: ["android.hardware.audio-impl_default.nubia_sdm845"],
     shared_libs: [
         "android.hardware.audio@6.0",
         "android.hardware.audio@6.0-util",
@@ -125,8 +125,8 @@ cc_library_shared {
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@7.0-impl",
-    defaults: ["android.hardware.audio-impl_default"],
+    name: "android.hardware.audio@7.0-impl.nubia_sdm845",
+    defaults: ["android.hardware.audio-impl_default.nubia_sdm845"],
     shared_libs: [
         "android.hardware.audio@7.0",
         "android.hardware.audio@7.0-util",
