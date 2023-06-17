@@ -18,6 +18,7 @@
 
 #include "core/default/StreamOut.h"
 #include "core/default/Util.h"
+#include <android-base/properties.h>
 
 //#define LOG_NDEBUG 0
 #define ATRACE_TAG ATRACE_TAG_AUDIO
@@ -40,6 +41,7 @@ namespace CPP_VERSION {
 namespace implementation {
 
 using ::android::hardware::audio::common::CPP_VERSION::implementation::HidlUtils;
+using ::android::base::GetProperty;
 
 namespace {
 
@@ -634,11 +636,15 @@ Result StreamOut::doUpdateSourceMetadataV7(const SourceMetadata& sourceMetadata)
 
 #if MAJOR_VERSION <= 6
 Return<void> StreamOut::updateSourceMetadata(const SourceMetadata& sourceMetadata) {
-    if (mStream->update_source_metadata == nullptr) {
+    if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
         return Void();  // not supported by the HAL
+    } else {
+        if (mStream->update_source_metadata == nullptr) {
+            return Void();  // not supported by the HAL
+        }
+        (void)doUpdateSourceMetadata(sourceMetadata);
+        return Void();
     }
-    (void)doUpdateSourceMetadata(sourceMetadata);
-    return Void();
 }
 #elif MAJOR_VERSION >= 7
 Return<Result> StreamOut::updateSourceMetadata(const SourceMetadata& sourceMetadata) {

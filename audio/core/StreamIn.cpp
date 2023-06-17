@@ -19,6 +19,7 @@
 #include "core/default/StreamIn.h"
 #include "core/default/Util.h"
 #include "common/all-versions/HidlSupport.h"
+#include <android-base/properties.h>
 
 //#define LOG_NDEBUG 0
 #define ATRACE_TAG ATRACE_TAG_AUDIO
@@ -38,6 +39,7 @@ namespace CPP_VERSION {
 namespace implementation {
 
 using ::android::hardware::audio::common::CPP_VERSION::implementation::HidlUtils;
+using ::android::base::GetProperty;
 
 namespace {
 
@@ -525,11 +527,15 @@ Result StreamIn::doUpdateSinkMetadataV7(const SinkMetadata& sinkMetadata) {
 
 #if MAJOR_VERSION <= 6
 Return<void> StreamIn::updateSinkMetadata(const SinkMetadata& sinkMetadata) {
-    if (mStream->update_sink_metadata == nullptr) {
+    if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
         return Void();  // not supported by the HAL
+    } else {
+        if (mStream->update_sink_metadata == nullptr) {
+            return Void();  // not supported by the HAL
+        }
+        (void)doUpdateSinkMetadata(sinkMetadata);
+        return Void();
     }
-    (void)doUpdateSinkMetadata(sinkMetadata);
-    return Void();
 }
 #elif MAJOR_VERSION >= 7
 Return<Result> StreamIn::updateSinkMetadata(const SinkMetadata& sinkMetadata) {
