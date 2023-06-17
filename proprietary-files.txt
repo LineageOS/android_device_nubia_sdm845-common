@@ -1,3 +1,42 @@
+# ADSP - from NX619J PKQ1.180929.001
+vendor/bin/adsprpcd|2b616ee7b35c850953b052257900727a58479c8b
+vendor/lib64/libadsp_default_listener.so|97a8881da178b51cbcdb1d2f95e92a1032d8d22e
+vendor/lib64/libadsprpc.so|d53fa2a361df410ba170ace8706ff8de015c4e85
+vendor/lib/libadsp_default_listener.so|ce1ed5199ce710a37a5747085cbbf83b90fdbe62
+vendor/lib/libadsprpc.so|5d007aae8a007e95d7d5f35a666e0c2653d846ef
+
+# ADSP modules - from NX619J PKQ1.180929.001
+vendor/lib/rfsa/adsp/libapps_mem_heap.so|26ac189fbdd6a893172a2781b90cbaf96eba0c7e
+vendor/lib/rfsa/adsp/libdsp_streamer_add_constant.so|ceec8df77c6501df4bbc06cd82d800e361505c1a
+vendor/lib/rfsa/adsp/libdsp_streamer_binning.so|00eb6acc7c864371b932f95ff98e98351c6508d8
+vendor/lib/rfsa/adsp/libdsp_streamer_skel.so|41450e1bf58ddb6481fdc1086bbbb8c413140d0a
+vendor/lib/rfsa/adsp/libdspCV_skel.so|2253ba74ae5d14dee3beeb07af64dbd429dbe011
+vendor/lib/rfsa/adsp/libexternal_dog_skel.so|93da7284b7b267c683242b297f2bb29f6258a0b7
+vendor/lib/rfsa/adsp/libfastcvadsp.so|81825039a5aa49528c553e5cdd8f645cb5d69530
+vendor/lib/rfsa/adsp/libfastcvdsp_skel.so|5904dd945651bf21a3cda372e77cd8cedfdb3f27
+vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_skel.so|c7028f19680001da4dcb039cbaecf05cfd7350b1
+vendor/lib/rfsa/adsp/libhexagon_nn_skel.so|6247884a5ea68fb5af917c09eb1156b8d588d0b6
+vendor/lib/rfsa/adsp/libhvxMathVIO.so|224f5be062d218f5116b0c6213abd8e9aee31afc
+vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so|637e3c05ff05fb62ff9eede4ba394cd8f1874e18
+vendor/lib/rfsa/adsp/libscveT2T_skel.so|378a152d7683e55375ec7a06eabe796c95b90c98
+vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so|c30bb30eecf968e02f72c055d3cc13a7f769644f
+vendor/lib/rfsa/adsp/libVC1Dec.so|80f2879a960344b24539725b2a5dc9ebe9d97bf5
+vendor/lib/rfsa/adsp/libVC1DecDsp_skel.so|c626d2136bf0d0016baf4c39ecc4a8f3241fa342
+
+# CDSP - from NX619J PKQ1.180929.001
+vendor/bin/cdsprpcd|86060f323c5087c6d5b25c7cc6639fdc83609c6f
+vendor/lib64/libcdsp_default_listener.so|b146e9e8d5974a44f61573ba30cca27c709727b9
+vendor/lib64/libcdsprpc.so|5f30d7b147dc0c142538d350ab2c8a593b8681f0
+vendor/lib64/libfastrpc_utf_stub.so|d155f70cbe69e43b3a6fba8ebfb60debf0b9ecb5
+vendor/lib64/libsdsprpc.so|2770df5d9c4808ff366b2024e4cc2b0b8cef9609
+vendor/lib64/libsysmon_cdsp_skel.so|c09aa99aff07b4d658533e87457c490c2f8a811b
+vendor/lib/libcdsp_default_listener.so|b0733db0f985af066378cb251d35a1faf8cb99bf
+vendor/lib/libcdsprpc.so|bdfe8d895a917514c753fea56dd199e6b28e3760
+vendor/lib/libfastcrc.so|a3e3fdf6b64bcc323cbc4bc8cf2af019a64e2c3f
+vendor/lib/libfastrpc_utf_stub.so|de9c916335c08ee3aee521d48a8067cbada6a28b
+vendor/lib/libsdsprpc.so|9a5156e649aef8b661af0faf3380890c349e9f8a
+vendor/lib/libsysmon_cdsp_skel.so|b0ff7a1becdb969861a57ce73e25f92e8b7e2090
+
 # ANT+ (system) - from Z01R WW_user_100.10.107.123_20210131
 product/lib64/com.qualcomm.qti.ant@1.0.so|f40868ad57012f1a512b14c889bc8380652cc50f
 product/lib/com.qualcomm.qti.ant@1.0.so|a6e5dc519d76a0d938701b8773df19cfa98596b4
