@@ -6,7 +6,6 @@ audio.offload.buffer.size.kb=32
 audio.offload.disable=1
 audio.offload.gapless.enabled=true
 audio.offload.video=true
-audio.ultrasonic.disable=true
 av.offload.enable=true
 media.stagefright.audio.deep=true
 persist.audio.fluence.speaker=true
