@@ -215,8 +215,8 @@ static void setBatteryBreathLight() {
 	}else if (battery_state == BATTERY_FULL) {
             LOG(DEBUG) << "BATTERY FULL";
             if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
-                // Full -- Turn off
-                set(NUBIA_LED_COLOR, NUBIA_LED_DISABLE);
+                // Full -- Set top led light up (RED)
+                set(NUBIA_LED_COLOR, NUBIA_LED_RED);
             } else {
                 // Full -- Set top led light up (green)
                 set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
@@ -244,7 +244,11 @@ static void setBatteryBreathLight() {
  * Set the the LED color and blinking mode for notification breath light.
  */
 static void setNotificationBreathLight() {
-    set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+    if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
+        set(NUBIA_LED_COLOR, NUBIA_LED_RED);
+    } else {
+        set(NUBIA_LED_COLOR, NUBIA_LED_GREEN);
+    }
     set(NUBIA_FADE, "3 0 4");
     set(NUBIA_GRADE, "0 100");
     set(NUBIA_LED_MODE, BLINK_MODE_ON);
