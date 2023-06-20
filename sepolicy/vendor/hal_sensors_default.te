@@ -8,9 +8,6 @@ allow hal_sensors_default sysfs_light_sensor:file { read write open };
 allow hal_sensors_default sysfs_proximity_sensor:dir search;
 allow hal_sensors_default sysfs_proximity_sensor:file { read open write };
 
-allow hal_sensors_default audio_socket:sock_file rw_file_perms;
-unix_socket_connect(hal_sensors_default, audio, hal_audio_default)
-
 get_prop(hal_sensors_default, adsprpc_prop)
 get_prop(hal_sensors_default, sensors_prop)
 
