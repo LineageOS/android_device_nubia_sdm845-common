@@ -16,6 +16,24 @@
       "message": "Use shim from lineage compat instead",
       "revId": "dc5a8a2b3ed493c24fa61300c6d260b26678fb91",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a99c794_8fda73fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 24457
+      },
+      "writtenOn": "2023-06-24T11:31:34Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_device_nubia_sdm845-common/+/359541\n\nThis commit is not used directly because I want to keep the change history.",
+      "parentUuid": "ba2f1e57_4b604f37",
+      "revId": "dc5a8a2b3ed493c24fa61300c6d260b26678fb91",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
