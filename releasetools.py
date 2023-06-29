@@ -18,10 +18,12 @@ import common
 import re
 
 def FullOTA_InstallEnd(info):
+  OTA_UpdateFirmware(info)
   OTA_InstallEnd(info)
   return
 
 def IncrementalOTA_InstallEnd(info):
+  OTA_UpdateFirmware(info)
   OTA_InstallEnd(info)
   return
 
@@ -46,6 +48,15 @@ def AddImage(info, basename, dest):
 def OTA_InstallEnd(info):
   AddImage(info, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
   AddImage(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
+  return
+
+def OTA_UpdateFirmware(info):
+  modem_file = "INSTALL/firmware-update/NON-HLOS.bin"
+  if modem_file not in info.input_zip.namelist():
+    return
+
+  info.script.AppendExtra('ui_print("Patching modem image unconditionally...");')
+  info.script.AppendExtra('package_extract_file("install/firmware-update/NON-HLOS.bin", "/dev/block/bootdevice/by-name/modem");')
   return
 
 def AddModemAssertion(info, input_zip):
