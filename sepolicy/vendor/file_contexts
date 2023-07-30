@@ -19,7 +19,7 @@
 /sys/devices/virtual/light/light(/.*)?                                                                  u:object_r:sysfs_light_sensor:s0
 
 # HALs
-/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.nubia_sdm845                   u:object_r:hal_fingerprint_default_exec:s0
+/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.nubia                  u:object_r:hal_fingerprint_default_exec:s0
 /vendor/bin/hw/android\.hardware\.light-service\.nubia_sdm845                                          u:object_r:hal_light_default_exec:s0
 /vendor/bin/hw/android\.hardware\.neuralnetworks@1\.3-service-qti                                       u:object_r:hal_neuralnetworks_default_exec:s0
 /vendor/bin/hw/android\.hardware\.power@1\.3-service\.nubia_sdm845-libperfmgr                          u:object_r:hal_power_default_exec:s0

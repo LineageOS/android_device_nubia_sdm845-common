@@ -170,7 +170,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.nubia_sdm845
+    android.hardware.biometrics.fingerprint@2.3-service.nubia
 
 # GPS
 PRODUCT_PACKAGES += \
