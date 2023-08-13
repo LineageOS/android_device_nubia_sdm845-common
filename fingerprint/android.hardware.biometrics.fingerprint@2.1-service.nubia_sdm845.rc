@@ -1,28 +1,3 @@
-on post-fs-data
-    mkdir /data/vendor/goodix 0777 system system
-    mkdir /data/vendor/silead 0777 system system
-    setprop ro.hardware.fingerprint goodix
-
-on boot
-
-    # for goodix fp (nx606j or nx619j)
-    chown system system /dev/goodix_fp
-    chmod 0777 /dev/goodix_fp
-
-    # for goodix double fp (nx616j)
-    chown system system /dev/goodix_fp_l
-    chmod 0777 /dev/goodix_fp_l
-    chown system system /dev/goodix_fp_r
-    chmod 0777 /dev/goodix_fp_r
-
-    # for silead fp (nx619j)
-    chown system system /dev/silead_fp
-    chmod 0660 /dev/silead_fp
-    chown system system /dev/spidev1.0
-    chmod 0660 /dev/spidev1.0
-    chown system system /dev/spidev0.0
-    chmod 0660 /dev/spidev0.0
-
 service vendor.fps_hal /vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service.nubia_sdm845
     # "class hal" causes a race condition on some devices due to files created
     # in /data. As a workaround, postpone startup until later in boot once
