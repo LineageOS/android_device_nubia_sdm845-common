@@ -26,6 +26,9 @@ function blob_fixup() {
         system_ext/lib64/lib-imsvideocodec.so)
             ${PATCHELF} --add-needed "libgui_shim.so" "${2}"
             ;;
+        vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service)
+            "${PATCHELF}" --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${2}"
+            ;;
     esac
 }
 
