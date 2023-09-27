@@ -669,7 +669,7 @@ vendor/radio/qcril_database/upgrade/6_version_update_ecc_table.sql|0fdf4b6ccb489
 vendor/radio/qcril_database/upgrade/7_version_update_ecc_table.sql|9a76d5747da2876b87b214579c9d74ae92d218d7
 
 # Sensors - from NX619J PKQ1.180929.001
-vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service|0914f14fa51d4d4a777ffbe63f5c0c4434de236b
+vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service|e329445dcce9b3129bf27a3e392eafd95bbafa76
 vendor/bin/sensors.qti|f87cad6a47bbf20ecf63ba4038cb83e1b5d0246a
 vendor/bin/sscrpcd|0c388eac24682ae0afe5fa61389537eb6db5fcd1
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc|449c88778d880c0d47cc4d651fc60c4c424c1a3f
