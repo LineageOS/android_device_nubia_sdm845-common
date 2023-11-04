@@ -527,13 +527,13 @@ vendor/lib64/libOmxVpp.so|a87440c7838b6f03726d97a4a52b695bb4c6e8f8
 vendor/lib64/libOmxWmaDec.so|7b2a714a74fea03a403a7d0edef61db2f70d7d4e
 vendor/lib64/libswvdec.so|ae1f55c7094e2a006e28dcfb0f2b9c32634fb849
 
-# Peripheral manager - from Z01R WW_user_100.10.107.123_20210131
-vendor/bin/pm-proxy|ee93ea32e23879e1bf213fb62253738d7559bb97
-vendor/bin/pm-service|5ce89fb681068616d4c797a25736706971ce4e59
-vendor/lib64/libperipheral_client.so|9475db86b218e2fd3b788993ff42cb79b7197c21
-vendor/lib64/libspcom.so|e38e18cebf7092593ea74d680ae7203cb3c4e811
-vendor/lib/libperipheral_client.so|7886baa3fb0f5d1bd7971d806a34118eae37af03
-vendor/lib/libspcom.so|4aa4d6147e960e7f00aa7880e37d63bd57bbd7b4
+# Peripheral manager - from PNX - PNX_00WW_FIH-user-11-RKQ1.200906.002-00WW_6_21F-release-keys
+vendor/bin/pm-proxy|832cbe7995de8177a2ef5bdf3f145131dfe828d4
+vendor/bin/pm-service|28f5e8d8f98c8e97941f514bafdc0b369cc5b600
+vendor/lib64/libperipheral_client.so|8cb65f4c93719767048dd7b1b845473fe6074ff7
+vendor/lib64/libspcom.so|1e82b29e1c128c6aef28f9f632f5cd0e04f5c3d9
+vendor/lib/libperipheral_client.so|4f4700270730d4043580a1e76566fd0124b01e18
+vendor/lib/libspcom.so|acec0b9bd1f9e31b3022f14975b0cc5566e4bb4a
 
 # Power-off alarm - from caymanslm - SKQ1.211103.001
 product/app/PowerOffAlarm/PowerOffAlarm.apk:system_ext/app/PowerOffAlarm/PowerOffAlarm.apk|f0a86fc11b38c059912303857bc4c79155430bcc
