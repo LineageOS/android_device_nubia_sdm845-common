@@ -1,0 +1,2 @@
+# Allow hal_health_default access to neo-battery
+allow hal_health_default sysfs_battery:file r_file_perms;
