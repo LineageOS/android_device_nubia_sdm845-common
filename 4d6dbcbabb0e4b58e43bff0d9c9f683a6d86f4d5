@@ -22,6 +22,30 @@
       },
       "revId": "4d6dbcbabb0e4b58e43bff0d9c9f683a6d86f4d5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac1cbbf_d31e3e36",
+        "filename": "sepolicy/vendor/genfs_contexts",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 26313
+      },
+      "writtenOn": "2024-06-06T17:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6551caab_447e8a48",
+      "range": {
+        "startLine": 34,
+        "startChar": 79,
+        "endLine": 34,
+        "endChar": 82
+      },
+      "revId": "4d6dbcbabb0e4b58e43bff0d9c9f683a6d86f4d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
