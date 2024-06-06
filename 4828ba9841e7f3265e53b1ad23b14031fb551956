@@ -24,6 +24,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "598b40e2_367cd11d",
+        "filename": "sepolicy/vendor/genfs_contexts",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 26313
+      },
+      "writtenOn": "2024-06-06T17:35:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "409a2e40_853bdebf",
+      "range": {
+        "startLine": 22,
+        "startChar": 140,
+        "endLine": 22,
+        "endChar": 149
+      },
+      "revId": "4828ba9841e7f3265e53b1ad23b14031fb551956",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a41e2b_333bcdea",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-05T13:39:28Z",
       "side": 1,
       "message": "`r_file_perms`",
+      "range": {
+        "startLine": 2,
+        "startChar": 44,
+        "endLine": 2,
+        "endChar": 65
+      },
+      "revId": "4828ba9841e7f3265e53b1ad23b14031fb551956",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3714efd_ebcc7323",
+        "filename": "sepolicy/vendor/hal_health_default.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 26313
+      },
+      "writtenOn": "2024-06-06T17:35:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a41e2b_333bcdea",
       "range": {
         "startLine": 2,
         "startChar": 44,
