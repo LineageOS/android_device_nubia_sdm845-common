@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c26bf690_8644e129",
+        "filename": "sepolicy/vendor/file.te",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2024-06-09T14:15:31Z",
+      "side": 1,
+      "message": "`sysfs_battery_supply` exists...",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "9a588238baaeef153217f9d2cfd3a67bc05030ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
