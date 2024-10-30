@@ -57,6 +57,9 @@ TARGET_PROVIDES_AUDIO_EXTNS := true
 # Bluetooth
 BOARD_HAS_QCA_BT_SOC := "cherokee"
 
+# Camera
+TARGET_USES_YCRCB_CAMERA_ENCODE := true
+
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
