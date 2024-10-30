@@ -70,6 +70,24 @@
       "parentUuid": "d16b1b4c_a153593b",
       "revId": "6d2922ea06d8bd5cbddddbf9f2e014e46556724f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "443acaa3_d6f8ca10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-10-30T12:24:38Z",
+      "side": 1,
+      "message": "the content of commit message now also becomes invalid... you can remove",
+      "parentUuid": "5c5271cb_6e961353",
+      "revId": "6d2922ea06d8bd5cbddddbf9f2e014e46556724f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
