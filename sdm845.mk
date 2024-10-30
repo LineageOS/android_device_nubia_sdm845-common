@@ -134,7 +134,8 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
     ueventd.qcom.rc \
-    init.nubia.common.rc
+    init.nubia.common.rc \
+    usb_compositions.conf
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -352,7 +353,8 @@ PRODUCT_USE_VNDK_OVERRIDE := true
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3-service.dual_role_usb
+    android.hardware.usb@1.3-service.dual_role_usb \
+    android.hardware.usb.gadget@1.2-service-qti
 
 # VNDK
 PRODUCT_COPY_FILES += \
