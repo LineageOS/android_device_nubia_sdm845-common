@@ -16,6 +16,24 @@
       "message": "you could drop changes on init rc, drop commit \"sdm845-common: rootdir: Move UVC triggers to QTI USB repo\", remove descriptions on commit message, like this:\n\nhttps://review.lineageos.org/c/LineageOS/android_device_xiaomi_sm8250-common/+/394103",
       "revId": "6d2922ea06d8bd5cbddddbf9f2e014e46556724f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba717fee_e9ca56f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 26313
+      },
+      "writtenOn": "2024-10-30T11:52:01Z",
+      "side": 1,
+      "message": "I wanted to keep the entire commits history. Okay, I\u0027ll change it as you said",
+      "parentUuid": "c55310fe_ca57aaba",
+      "revId": "6d2922ea06d8bd5cbddddbf9f2e014e46556724f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
