@@ -34,6 +34,24 @@
       "parentUuid": "c55310fe_ca57aaba",
       "revId": "6d2922ea06d8bd5cbddddbf9f2e014e46556724f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16b1b4c_a153593b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-10-30T11:54:29Z",
+      "side": 1,
+      "message": "those init rc changes are just obsolete... and picking from sm8250-common instead doesn\u0027t violate \"keep the entire commits history\" XD",
+      "parentUuid": "ba717fee_e9ca56f4",
+      "revId": "6d2922ea06d8bd5cbddddbf9f2e014e46556724f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
