@@ -16,6 +16,23 @@
       "message": "nvm\nduplicate",
       "revId": "1f43c8cac8235e502e8546a379ce5d2657a40f7c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084c3010_40cfb6e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 26313
+      },
+      "writtenOn": "2025-01-11T15:36:49Z",
+      "side": 1,
+      "message": "tested on nx619j, booted fine",
+      "revId": "1f43c8cac8235e502e8546a379ce5d2657a40f7c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
