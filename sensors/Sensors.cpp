@@ -152,7 +152,7 @@ Return<Result> Sensors::setOperationMode(OperationMode mode) {
 
 Return<Result> Sensors::activate(
         int32_t sensor_handle, bool enabled) {
-    if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
+    if (GetProperty("ro.product.vendor.device", "") == "nx606j") {
         LOG(ERROR) << "SensorHandle=" << sensor_handle << ", enable=" << enabled;
         if (sensor_handle == 36) { //prox
             if (!audioDevice) {

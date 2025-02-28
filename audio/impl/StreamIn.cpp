@@ -531,7 +531,7 @@ Result StreamIn::doUpdateSinkMetadataV7(const SinkMetadata& sinkMetadata) {
 
 #if MAJOR_VERSION <= 6
 Return<void> StreamIn::updateSinkMetadata(const SinkMetadata& sinkMetadata) {
-    if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
+    if (GetProperty("ro.product.vendor.device", "") == "nx606j") {
         return Void();  // not supported by the HAL
     } else {
         if (mStream->update_sink_metadata == nullptr) {

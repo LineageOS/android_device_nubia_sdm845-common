@@ -640,7 +640,7 @@ Result StreamOut::doUpdateSourceMetadataV7(const SourceMetadata& sourceMetadata)
 
 #if MAJOR_VERSION <= 6
 Return<void> StreamOut::updateSourceMetadata(const SourceMetadata& sourceMetadata) {
-    if (GetProperty("ro.product.vendor.device", "") == "NX606J") {
+    if (GetProperty("ro.product.vendor.device", "") == "nx606j") {
         return Void();  // not supported by the HAL
     } else {
         if (mStream->update_source_metadata == nullptr) {
