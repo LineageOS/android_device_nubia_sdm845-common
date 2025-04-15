@@ -1,6 +1,6 @@
 
 #
-# Copyright (C) 2018-2020 The LineageOS Project
+# Copyright (C) 2018-2025 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -127,12 +127,12 @@ PRODUCT_PACKAGES += \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.rc \
+    init.qcom.recovery.rc \
     init.qcom.power.rc \
     init.qcom.sensors.sh \
     init.qcom.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
-    init.recovery.qcom.rc \
     ueventd.qcom.rc \
     init.nubia.common.rc
 
