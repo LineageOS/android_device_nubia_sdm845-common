@@ -104,7 +104,8 @@ TARGET_COPY_OUT_VENDOR := vendor
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
     /vendor/firmware_mnt:/firmware \
-    /vendor/bt_firmware:/bt_firmware
+    /vendor/bt_firmware:/bt_firmware \
+    /mnt/vendor/persist:/persist
 
 # Properties
 TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
