@@ -277,10 +277,6 @@ PRODUCT_PACKAGES += \
     qti-telephony-utils \
     qti_telephony_utils.xml
 
-# Tethering
-PRODUCT_PACKAGES += \
-    TetheringConfigOverlay
-
 # Treble
 PRODUCT_USE_VNDK_OVERRIDE := true
 
