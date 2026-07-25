@@ -17,6 +17,8 @@
 
 package org.lineageos.settings.doze;
 
+import static android.provider.Settings.Secure.DOZE_ENABLED;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,8 +29,6 @@ import android.provider.Settings;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
-
-import static android.provider.Settings.Secure.DOZE_ENABLED;
 
 public final class DozeUtils {
 
