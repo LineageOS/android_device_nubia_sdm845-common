@@ -78,12 +78,9 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.2-impl:32 \
     audio.r_submix.default \
     audio.usbv2.default \
-    libaudioroute.vendor \
-    libprocessgroup.vendor \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libtinycompress \
     libvolumelistener \
     tinymix
 
@@ -107,20 +104,13 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0 \
-    android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth.audio-impl \
-    audio.bluetooth.default \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor
+    audio.bluetooth.default
 
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl:32 \
-    android.hardware.camera.provider@2.4-service \
-    libdng_sdk.vendor \
-    libgui_shim \
-    vendor.qti.hardware.camera.device@1.0.vendor
+    android.hardware.camera.provider@2.4-service
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -151,11 +141,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl-qti-display \
     gralloc.sdm845 \
     hwcomposer.qcom \
-    libdisplayconfig.qti \
-    libqdMetaData \
-    libtinyxml \
-    vendor.display.config@1.0.vendor \
-    vendor.display.config@2.0 \
     vendor.qti.hardware.display.allocator@1.0-service \
     vendor.qti.hardware.memtrack-service
 
@@ -165,18 +150,11 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3.vendor \
-    android.hardware.drm-service.clearkey \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat \
-    libcrypto_shim.vendor
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
 
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.nubia
-
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@2.1.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
@@ -197,26 +175,10 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
 
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.allocator@1.0.vendor \
-    android.hidl.base@1.0 \
-    android.hidl.base@1.0.vendor \
-    android.hidl.memory@1.0.vendor \
-    libhidlmemory.vendor \
-    libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
-    libhwbinder.vendor
-
 # IPA
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
-
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0.vendor
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -232,10 +194,7 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
-    libavservices_minijail \
-    libavservices_minijail.vendor \
     libc2dcolorconvert \
-    libOmxCore \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
@@ -257,14 +216,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
-# Net
-PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor
-
-# Neural Network
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.3.vendor
-
 # Partitions
 PRODUCT_PACKAGES += \
     vendor_bt_firmware_mountpoint \
@@ -280,32 +231,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/power/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
-# Protobuf
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-vendorcompat
-
 # QTI
 PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/qti_whitelist.xml \
     $(LOCAL_PATH)/permissions/system_ext-privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-qti.xml
-
-# Radio
-PRODUCT_PACKAGES += \
-    android.hardware.secure_element@1.2.vendor \
-    android.hardware.radio@1.5.vendor \
-    android.hardware.radio.config@1.2.vendor \
-    android.hardware.radio.deprecated@1.0.vendor \
-    libjson \
-    libprotobuf-cpp-full \
-    librmnetctl \
-    libxml2 \
-    libsqlite.vendor:64
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -319,10 +251,8 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.frameworks.sensorservice@1.0.vendor \
     android.hardware.sensors@1.0-impl.nubia_sdm845:64 \
-    android.hardware.sensors@1.0-service.nubia_sdm845 \
-    libsensorndkbridge
+    android.hardware.sensors@1.0-service.nubia_sdm845
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
